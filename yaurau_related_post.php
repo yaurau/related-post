@@ -6,4 +6,4 @@ Version: 1.0
 Author: Rauvtovich Yauhen
 License: A "Slug" license name e.g. GPL2
 */
-echo 1;
+echo 2;
