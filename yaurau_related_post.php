@@ -1,7 +1,6 @@
 <?php
 
 /**
-
  * Plugin Name:       Yaurau Related Post
  * Plugin URI:        https://github.com/yaurau/related-post
  * Description:       A plugin for output related post.
