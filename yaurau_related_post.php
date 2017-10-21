@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Yaurau Related Post
  * Plugin URI:        https://github.com/yaurau/related-post
- * Description:       A plugin for output related post.
+ * Description:       A plugin for output related post .
  * Version:           1.0.0
  * Author:            Rauvtovich Yauhen
  * Author URI:        https://github.com/yaurau
