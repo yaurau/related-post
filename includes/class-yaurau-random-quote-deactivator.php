@@ -9,13 +9,11 @@ class Yaurau_Random_Quote_Deactivator {
     }
 
     public function DB() {
-        $sql = "CREATE TABLE wp_yaurau_random_quote (
-            id INT(11) NOT NULL AUTO_INCREMENT,
-        PRIMARY KEY(`id`))";
+        $sql = "DROP TABLE wp_yaurau_random_quote";
         $this->db->query($sql);
     }
 	public static function deactivate() {
-        $deactivate = new self;
+        $deactivate = new Yaurau_Random_Quote_Deactivator();
         $deactivate->DB();
 	}
 
