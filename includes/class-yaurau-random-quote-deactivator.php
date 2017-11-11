@@ -1,6 +1,6 @@
 <?php
 
-class Plugin_Name_Deactivator {
+class Yaurau_Random_Quote_Deactivator {
     private $db;
     public function __construct()
     {

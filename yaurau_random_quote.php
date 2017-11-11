@@ -27,7 +27,7 @@ function activate_yaurau_random_quote() {
  */
 function deactivate__yaurau_random_quote() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-yaurau-random-quote-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+	Yaurau_Random_Quote_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_yaurau_random_quote' );
