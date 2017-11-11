@@ -23,10 +23,10 @@ function activate_yaurau_random_quote() {
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-yaurau-useful-data-deactivator.php
+ * This action is documented in includes/class-yaurau-random-quote-deactivator.php
  */
 function deactivate__yaurau_random_quote() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-yaurau-useful-data-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-yaurau-random-quote-deactivator.php';
 	Plugin_Name_Deactivator::deactivate();
 }
 
