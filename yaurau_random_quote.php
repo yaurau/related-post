@@ -17,8 +17,7 @@
  */
 require_once __DIR__ . '/autoload.php';
 function activate_yaurau_random_quote() {
-    $create = new Yaurau_Random_Quote_Activator;
-    $create->activate();
+    Yaurau_Random_Quote_Activator::activate();
 }
 
 /**
@@ -30,6 +29,6 @@ function deactivate_yaurau_random_quote() {
 	Yaurau_Random_Quote_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_yaurau_random_quote' );
+register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']);
 register_deactivation_hook( __FILE__, 'deactivate_yaurau_random_quote' );
 
