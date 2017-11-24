@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../autoload.php';
 class DB
 {
     private $db;
@@ -13,13 +14,12 @@ class DB
     */
     public function createDB()
     {
-        $sql = <<<EOT
-            CREATE TABLE wp_yaurau_random_quote (
+        $sql =
+            "CREATE TABLE wp_yaurau_random_quote (
             id INT(11) NOT NULL AUTO_INCREMENT,
             `quote` text,
 			`author` varchar(255),
-            PRIMARY KEY(`id`)); INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив трудность, отступишь', 'Гай Юлий Цезарь')
-EOT;
+            PRIMARY KEY(`id`))";
 
         $this->db->query($sql);
     }
@@ -31,6 +31,8 @@ EOT;
         $sql = "DROP TABLE wp_yaurau_random_quote";
         $this->db->query($sql);
     }
+
+    public function createQuote(){
+        $sql = "INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив                     трудность, отступишь', 'Гай Юлий Цезарь')";
+    }
 }
-/*; INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив                     трудность, отступишь', 'Гай Юлий Цезарь')
-*/

@@ -12,4 +12,5 @@
 require_once __DIR__ . '/autoload.php';
 register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deactivate']);
+add_action( 'basic_after_single_content', [$quote_rotator, 'loaded'] );
 
