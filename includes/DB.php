@@ -34,5 +34,10 @@ class DB
 
     public function createQuote(){
         $sql = "INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив                     трудность, отступишь', 'Гай Юлий Цезарь')";
+        $this->db->query($sql);
+    }
+    public function loadQuote(){
+        $sql = "SELECT * FROM `wp_yaurau_random_quote` WHERE id=1";
+        $this->db->query($sql);
     }
 }
