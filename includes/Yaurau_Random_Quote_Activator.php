@@ -8,6 +8,5 @@ class Yaurau_Random_Quote_Activator extends DB {
     static function activate() {
         $activate = new DB();
         $activate->createDB();
-        Yaurau_Random_Quote_Loader::loadQuote();
 	}
 }
