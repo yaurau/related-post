@@ -6,7 +6,7 @@ class DB
     public function __construct()
     {
         global $wpdb;
-        $this->db = $wpdb;
+        $this->db = $wpdb->q;
     }
     /*
     * Function name: createDB

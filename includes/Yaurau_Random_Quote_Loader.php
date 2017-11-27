@@ -2,6 +2,10 @@
 require_once __DIR__ . '/../autoload.php';
 class Yaurau_Random_Quote_Loader
 {
+    /*
+    * Function name: load
+    * Purpose: Load quote
+    */
     public static function load()
     {
         $load = new DB();
