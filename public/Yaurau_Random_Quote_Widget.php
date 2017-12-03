@@ -10,8 +10,7 @@ class Yaurau_Random_Quote_Widget extends WP_Widget
 {
     public static function widgetGet()
     {
-        echo Yaurau_Random_Quote_Loader::getQuote(). "<br><p align='right'>" . Yaurau_Random_Quote_Loader::getAuthor() . '</p>';
-
+        echo '<p>' . Yaurau_Random_Quote_Loader::getQuote(). "</p>". "<br><p align='right'>" . Yaurau_Random_Quote_Loader::getAuthor() . '</p>';
     }
 
 }
