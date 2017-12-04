@@ -13,4 +13,15 @@ require_once __DIR__ . '/autoload.php';
 register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deactivate']);
 add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Widget', 'widgetGet'] );
+add_action( 'admin_menu', 'my_plugin_menu' );
+
+function my_plugin_menu() {
+    add_options_page(
+        'My Options',
+        'My Plugin',
+        'manage_options',
+        'my-plugin.php',
+        'my_plugin_page'
+    );
+}
 

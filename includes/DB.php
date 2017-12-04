@@ -21,7 +21,7 @@ class DB
 			`author` varchar(255),
             PRIMARY KEY(`id`))";
 
-        $this->db->query($this->db->prepare($sql));
+        $this->db->query($sql);
     }
     /*
     * Function name: dropDB
@@ -29,12 +29,11 @@ class DB
     */
     public function dropDB() {
         $sql = "DROP TABLE wp_yaurau_random_quote";
-        $this->db->query($this->db->prepare($sql));
+        $this->db->query($sql);
     }
-
     public function createQuote(){
         $sql = "INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив                     трудность, отступишь', 'Гай Юлий Цезарь')";
-        $this-> db->query($this->db->prepare($sql));
+        $this->db->query($sql);
     }
     public function loadQuote(){
         //$sql = $this->db->prepare("SELECT `quote`, `author` FROM `wp_yaurau_random_quote` WHERE id=%d", 1);
