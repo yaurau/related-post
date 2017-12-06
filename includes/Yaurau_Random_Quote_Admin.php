@@ -1,25 +1,25 @@
 <?php
 
 
-class Yaurau_Random_Quote_Admin
-{
-    function __construct() {
-        add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-    }
-    function admin_menu() {
+class Yaurau_Random_Quote_Admin{
+
+    public function createMenu() {
         add_options_page(
             'Page Title',
-            'Circle Tree Login',
+            'Yaurau Random Quote',
             'manage_options',
             'options_page_slug',
-            array(
-                $this,
+            [
+                'Yaurau_Random_Quote_Admin',
                 'settings_page'
-            )
+            ]
         );
     }
-    function  settings_page() {
-        echo 'This is the page content';
+    public function  settings_page() {
+        Yaurau_Random_Quote_Widget::adminWidgetGet();
+    }
+    static public function getCreateMenu() {
+        add_action( 'admin_menu', ['Yaurau_Random_Quote_Admin', 'createMenu']);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../autoload.php';
-class Yaurau_Random_Quote_Loader
+class Yaurau_Random_Quote_Loader extends Yaurau_Random_Quote_Admin
 {
     /*
     * Function name: load
