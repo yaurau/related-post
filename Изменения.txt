@@ -1,0 +1,13 @@
+28.09.2017
+1. DB;
+2. class Yaurau_Random_Quote_Loader;
+3. class Random_Quote_Widget;
+4. autoload;
+5. yaurau_random_quote
+
+04.12.2017
+1. class Yaurau_Random_Quote_Activator;
+2. DB; 
+3. class Yaurau_Random_Quote_Admin
+07.12.2017
+1. admin_widget.php;
