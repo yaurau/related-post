@@ -4,7 +4,7 @@
     <br>
 <h2>
     Add new quote
-</h2>
+    </h2>
 <p>
     <label>
         <h3>
