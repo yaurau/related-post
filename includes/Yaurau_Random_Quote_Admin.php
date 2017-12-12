@@ -1,5 +1,6 @@
 <?php
 
+
 class Yaurau_Random_Quote_Admin{
 
     public function createMenu() {
@@ -7,7 +8,6 @@ class Yaurau_Random_Quote_Admin{
             'Page Title',
             'Yaurau Random Quote',
             'manage_options',
-            'yaurauquote',
             'options_page_slug',
             [
                 'Yaurau_Random_Quote_Admin',

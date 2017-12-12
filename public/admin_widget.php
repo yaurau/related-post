@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-
-<h1>
-  Yaurau Random Quote
-</h1>
-<br>
-<h2>
-  Add new quote
-</h2>
-<p>
-<div class="letter" role="alert">
-    This is a primary alert—check it out!
-</div>
-=======
+<?php
+function my_style_load() {
+    $theme_uri = __DIR__ . '/public/css/1.css';
+    wp_register_style('my_theme_style', $theme_uri, array());
+    wp_enqueue_style('my_theme_style');
+}
+?>
 <h1>
     Yaurau Random Quote
 </h1>
@@ -19,10 +12,9 @@
 <h2>
     Add new quote
     </h2>
-<p>
->>>>>>> origin/master
+<p >
     <label>
-        <h3>
+        <h3 style="background: red">
             Quote
         </h3>
     </label>

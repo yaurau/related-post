@@ -10,7 +10,12 @@
  * License:           GPL-2.0+
  */
 require_once __DIR__ . '/autoload.php';
+
+
 register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']);
+add_action('wp_enqueue_scripts', 'my_style_load');
 register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deactivate']);
-add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Loader', 'load'] );
+add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Widget', 'widgetGet'] );
+ Yaurau_Random_Quote_Admin::getCreateMenu();
+
 
