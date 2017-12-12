@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <h1>
   Yaurau Random Quote
@@ -10,6 +11,16 @@
 <div class="letter" role="alert">
     This is a primary alert—check it out!
 </div>
+=======
+<h1>
+    Yaurau Random Quote
+</h1>
+    <br>
+<h2>
+    Add new quote
+    </h2>
+<p>
+>>>>>>> origin/master
     <label>
         <h3>
             Quote

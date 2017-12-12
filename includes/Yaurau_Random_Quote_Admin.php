@@ -8,7 +8,11 @@ class Yaurau_Random_Quote_Admin{
             'Page Title',
             'Yaurau Random Quote',
             'manage_options',
+<<<<<<< HEAD
             'yaurauquote',
+=======
+            'options_page_slug',
+>>>>>>> origin/master
             [
                 'Yaurau_Random_Quote_Admin',
                 'settings_page'
@@ -20,8 +24,11 @@ class Yaurau_Random_Quote_Admin{
     }
     static public function getCreateMenu() {
         add_action( 'admin_menu', ['Yaurau_Random_Quote_Admin', 'createMenu']);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
     }
 
 }

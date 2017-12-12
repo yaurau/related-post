@@ -1,2 +1,8 @@
 /vendor/
+<<<<<<< HEAD
 /.idea
+=======
+/.idea
+/Изменения.txt
+/.gitignore
+>>>>>>> origin/master
