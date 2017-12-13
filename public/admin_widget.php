@@ -1,10 +1,27 @@
 <?php
-function my_style_load() {
-    $theme_uri = __DIR__ . '/public/css/1.css';
-    wp_register_style('my_theme_style', $theme_uri, array());
-    wp_enqueue_style('my_theme_style');
+global $submenu;
+
+// access page settings
+$page_data = array();
+
+foreach ($submenu['options-general.php'] as $i => $menu_item) {
+    if ($submenu['options-general.php'][$i][2] == 'msp_helloworld') {
+        $page_data = $submenu['options-general.php'][$i];
+    }
 }
+// output
 ?>
+<div class="wrap">
+    <?php screen_icon(); ?>
+    <h2><?php echo $page_data[3]; ?></h2>
+    <form id="msp_helloworld_options" action="options.php" method="post">
+        <?php
+        settings_fields('msp_helloworld_options');
+        do_settings_sections('msp_helloworld');
+        submit_button('Save options', 'primary', 'msp_helloworld_options_submit');
+        ?>
+    </form>
+</div>
 <h1>
     Yaurau Random Quote
 </h1>
@@ -14,7 +31,7 @@ function my_style_load() {
     </h2>
 <p >
     <label>
-        <h3 style="background: red">
+        <h3 class="local">
             Quote
         </h3>
     </label>
