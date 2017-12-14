@@ -16,4 +16,4 @@ register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']
 register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deactivate']);
 add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Widget', 'widgetGet'] );
  Yaurau_Random_Quote_Admin::getCreateMenu();
-add_filter('plugin_action_links', ['Yaurau_Random_Quote_Admin', 'getSettingsLink'], 10, 4);
+add_filter('plugin_action_links', ['Yaurau_Random_Quote_Admin', 'getSettingsLink']);
