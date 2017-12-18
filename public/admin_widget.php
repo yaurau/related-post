@@ -12,7 +12,9 @@ foreach ($submenu['options-general.php'] as $i => $menu_item) {
 // output
 ?>
 <div class="wrap">
-    <?php screen_icon(); ?>
+    <?php screen_icon();
+    var_dump($submenu['options-general.php']);
+    ?>
     <h2><?php echo $page_data[3]; ?></h2>
     <form id="msp_helloworld_options" action="options.php" method="post">
         <?php

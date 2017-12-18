@@ -8,11 +8,12 @@ class Yaurau_Random_Quote_Loader extends Yaurau_Random_Quote_Admin
     */
     public static function getQuote()
     {
-        $load = new DB();
+        /*$load = new DB();
         $result = $load->loadQuote();
         foreach ( $result as $key) {
             return $key->quote;
-        }
+        }*/
+        return $_SERVER ['REMOTE_ADDR'];
     }
     public static function getAuthor()
     {
