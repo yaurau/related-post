@@ -5,7 +5,7 @@ class Yaurau_Random_Quote_Admin
 
     static public function createMenu()
     {
-        add_options_page('IP Blocker', 'Yaurau IP Blocker', 'manage_options', 'post.php', [__CLASS__, 'settings_page']);
+        add_options_page('IP Blocker', 'Yaurau IP Blocker', 'manage_options', MY_PLAGIN_PAGE, [__CLASS__, 'settings_page']);
 
     }
 
@@ -45,13 +45,11 @@ class Yaurau_Random_Quote_Admin
         add_action( 'admin_menu', [__CLASS__, 'createMenu']);
         add_action( 'admin_init', [__CLASS__,'my_register_settings'] );
     }
-    static public function getSettingsLink( $actions, $plugin_file = MY_PLAGIN_PAGE )
+    static public function getSettingsLink( $links)
     {
-        if( false === strpos( $plugin_file, basename(__FILE__) ) )
-            return $actions;
-        $settings_link = '<a href="options-general.php?page=post.php">Settings</a>';
-        array_unshift( $actions, $settings_link );
-        return $actions;
+        $settings_link = '<a href="options-general.php?page=yaurau_ip_blocker">Settings</a>';
+        array_unshift( $links, $settings_link );
+        return $links;
     }
 }
 

@@ -11,13 +11,16 @@
  */
 
 require_once __DIR__ . '/autoload.php';
-const MY_PLAGIN_PAGE = 'post.php';
+const MY_PLAGIN_PAGE = 'yaurau_ip_blocker';
+
 
 register_activation_hook( __FILE__, ['Yaurau_Random_Quote_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deactivate']);
 add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Widget', 'widgetGet'] );
  Yaurau_Random_Quote_Admin::getCreateMenu();
-add_filter('plugin_action_links', ['Yaurau_Random_Quote_Admin', 'getSettingsLink']);
+//$plugin_file = plugin_basename(__FILE__);
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_Random_Quote_Admin', 'getSettingsLink'] );
+//add_filter('plugin_action_links', ['Yaurau_Random_Quote_Admin', 'getSettingsLink']);
 
 
 
