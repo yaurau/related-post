@@ -6,8 +6,8 @@ spl_autoload_register(function ($class) {
     elseif (file_exists(__DIR__ . '/public/' . $class . '.php')) {
         require_once __DIR__ . '/public/' . $class . '.php';
     }
-    elseif (file_exists(__DIR__ . '/includes/function.php')) {
-        require_once __DIR__ . '/includes/function.php';
+    elseif (file_exists(__DIR__ . '/public/function.php')) {
+        require_once __DIR__ . '/public/function.php';
     }
 });
    /* elseif (file_exists( __DIR__ .'/models/' . $class . '.php')) {
