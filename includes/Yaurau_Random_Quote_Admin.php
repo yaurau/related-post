@@ -12,13 +12,13 @@ class Yaurau_Random_Quote_Admin
         register_setting( 'new_option', 'option' );
             add_settings_section(
                 'eg_setting_section', // секция
-                'Settening',
+                'The maximum number of hits per day',
                 '',
                 MY_PLAGIN_PAGE // страница
             );
             add_settings_field(
                 'IP',
-                'Введите IP',
+                'Enter the maximum number of hits',
                 'msp_helloworld_authorbox_field',
                 MY_PLAGIN_PAGE,
                 'eg_setting_section'
