@@ -16,7 +16,7 @@ register_deactivation_hook( __FILE__, ['Yaurau_Random_Quote_Deactivator','deacti
 add_action( 'basic_after_single_content', ['Yaurau_Random_Quote_Widget', 'widgetGet'] );
  Yaurau_Random_Quote_Admin::getCreateMenu();
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_Random_Quote_Admin', 'getSettingsLink'] );
-
+add_action( 'basic_after_single_content', ['DB','setIP']);
 
 
 

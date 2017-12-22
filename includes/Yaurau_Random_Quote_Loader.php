@@ -15,13 +15,5 @@ class Yaurau_Random_Quote_Loader extends Yaurau_Random_Quote_Admin
         }*/
         return $_SERVER ['REMOTE_ADDR'];
     }
-    public static function getAuthor()
-    {
-        $load = new DB();
-        $result = $load->loadQuote();
-        foreach ($result as $key) {
-            return $key->author;
-        }
-    }
 }
 

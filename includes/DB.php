@@ -15,12 +15,12 @@ class DB
     public function createDB()
     {
         $sql =
-            "CREATE TABLE wp_yaurau_random_quote (
+            "CREATE TABLE wp_yaurau_ip_blocker (
             id INT(11) NOT NULL AUTO_INCREMENT,
-            `quote` text,
-			`author` varchar(255),
+            `IP` text(50),
+			`number_views` int(255),
+			`time` int(255),
             PRIMARY KEY(`id`))";
-
         $this->db->query($sql);
     }
     /*
@@ -28,12 +28,19 @@ class DB
     * Purpose: Drop the database tables
     */
     public function dropDB() {
-        $sql = "DROP TABLE wp_yaurau_random_quote";
+        $sql = "DROP TABLE wp_yaurau_ip_blocker";
         $this->db->query($sql);
     }
-    public function createQuote(){
-        //$sql = "INSERT INTO `wp_yaurau_random_quote`( `quote`, `author`) VALUES              ('Великие начинания даже не надо обдумывать, надо взяться за дело, иначе, заметив                     трудность, отступишь', 'Гай Юлий Цезарь')";
-        //$this->db->query($sql);
+    public function setIPDB(){
+        $IP = $_SERVER ['REMOTE_ADDR'];
+        $time = time();
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `time`) VALUES  ('$IP','$time')";
+        $this->db->query($sql);
+    }
+    static public function setIP(){
+        $setIP = new DB;
+        $setIP->setIPDB();
+
     }
     public function loadQuote(){
         //$sql = $this->db->prepare("SELECT `quote`, `author` FROM `wp_yaurau_random_quote` WHERE id=%d", 1);
