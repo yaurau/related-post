@@ -12,6 +12,7 @@ interface IP_Blocker {
 
 class Yaurau_IP_Blocker implements IP_Blocker
 {
+    public $set;
     static public function setIP(){
         $setIP = new DB;
         $setIP->setIPDB();
@@ -27,12 +28,14 @@ class Yaurau_IP_Blocker implements IP_Blocker
     }
     static public function handleIP (){
         $setIP = new DB;
-        return $setIP->handleIPDB();
-        /*if(self::handleIP()){
+        //$this->set=
+           // return $setIP->handleIPDB();
+        if($setIP->handleIPDB() == NULL){
             return 'FALSE';
         }
         else {
-            return 'Ok';
-        }*/
+            $count = new DB;
+            $count->counterViews();
+        }
     }
 }

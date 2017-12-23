@@ -3,6 +3,7 @@ require_once __DIR__ . '/../autoload.php';
 class DB
 {
     private $db;
+    public $views;
     public function __construct()
     {
         global $wpdb;
@@ -32,7 +33,7 @@ class DB
         $this->db->query($sql);
     }
     public function setIPDB(){
-        $IP = $_SERVER ['REMOTE_ADDR'];
+        $IP = convert_uuencode ($_SERVER ['REMOTE_ADDR']);
         $time = time();
         $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
         $this->db->query($sql);
@@ -40,10 +41,19 @@ class DB
 
     public function handleIPDB()
     {
-        $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '127.0.0.1'";
+        $IP = convert_uuencode($_SERVER ['REMOTE_ADDR']);
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $this->db->query($sql);
     }
+    public function counterViews()
+    {
+        $IP = convert_uuencode($_SERVER ['REMOTE_ADDR']);
+        $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
+        $this->views = ($this->db->query($sql)) + 1;
+        $sql = "UPDATE `wp_yaurau_ip_blocker`( `number_views`) VALUES  ('10') WHERE `IP`= '$IP'";
+        $this->db->query($sql);
+    }
+
 
     public function loadQuote(){
         //$sql = $this->db->prepare("SELECT `quote`, `author` FROM `wp_yaurau_random_quote` WHERE id=%d", 1);
