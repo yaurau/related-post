@@ -34,14 +34,17 @@ class DB
     public function setIPDB(){
         $IP = $_SERVER ['REMOTE_ADDR'];
         $time = time();
-        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `time`) VALUES  ('$IP','$time')";
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
         $this->db->query($sql);
     }
-    static public function setIP(){
-        $setIP = new DB;
-        $setIP->setIPDB();
 
+    public function handleIPDB()
+    {
+        $IP = $_SERVER ['REMOTE_ADDR'];
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '127.0.0.1'";
+        return $this->db->query($sql);
     }
+
     public function loadQuote(){
         //$sql = $this->db->prepare("SELECT `quote`, `author` FROM `wp_yaurau_random_quote` WHERE id=%d", 1);
         //$sql = "SELECT * FROM `wp_yaurau_random_quote`";
