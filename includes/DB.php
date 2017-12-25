@@ -33,7 +33,7 @@ class DB
         $this->db->query($sql);
     }
     public function setIPDB(){
-        $IP = convert_uuencode ($_SERVER ['REMOTE_ADDR']);
+        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
         $time = time();
         $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
         $this->db->query($sql);
@@ -41,16 +41,16 @@ class DB
 
     public function handleIPDB()
     {
-        $IP = convert_uuencode($_SERVER ['REMOTE_ADDR']);
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']).'\r\n';
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $this->db->query($sql);
     }
     public function counterViews()
     {
-        $IP = convert_uuencode($_SERVER ['REMOTE_ADDR']);
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']) . '\r\n';
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
-        $this->views = ($this->db->query($sql)) + 1;
-        $sql = "UPDATE `wp_yaurau_ip_blocker` SET 'number_views'='10' WHERE `IP`= '$IP'";
+        $this->views =  $this->db->get_var($sql) + 1;
+        $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $this->views WHERE `IP`= '$IP'";
         $this->db->query($sql);
     }
 
