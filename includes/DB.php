@@ -50,7 +50,7 @@ class DB
         $IP = convert_uuencode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         $this->views = ($this->db->query($sql)) + 1;
-        $sql = "UPDATE `wp_yaurau_ip_blocker`( `number_views`) VALUES  ('10') WHERE `IP`= '$IP'";
+        $sql = "UPDATE `wp_yaurau_ip_blocker` SET 'number_views'='10' WHERE `IP`= '$IP'";
         $this->db->query($sql);
     }
 
