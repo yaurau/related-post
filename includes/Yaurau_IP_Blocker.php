@@ -2,7 +2,7 @@
 
 interface IP_Blocker {
     //public function setIP();
-    public function getIPDB();
+    //public function getIPDB();
     public function countEnterIP();
     //public function addIPDB ();
     //public function addIPHtaccess ();
@@ -17,8 +17,9 @@ class Yaurau_IP_Blocker implements IP_Blocker
         $setIP = new DB;
         $setIP->setIPDB();
     }
-    public function getIPDB(){
-
+    static public function getIPDB(){
+        $getIP = new DB();
+        $getIP->loadIPDB();
     }
     public function countEnterIP(){
 
