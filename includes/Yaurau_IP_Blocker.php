@@ -18,11 +18,17 @@ class Yaurau_IP_Blocker implements IP_Blocker
         $setIP->setIPDB();
     }
     static public function getIPDB(){
-        $getIP = new DB();
-        $getIP->loadIPDB();
+        $valueIP=DB::loadIPDB();
+        foreach ($valueIP as $key=>$value){
+            foreach ($value as $v2) {
+                yield $v2;
+            }
+        }
     }
     public function countEnterIP(){
-
+        $file = __DIR__ .'/../../../../.htaccess';
+        $data = '<br>'.'Order Allow,Deny' . '<br>' . 'Allow from' .  $this->set ;
+        file_put_contents($file, $data, FILE_APPEND);
     }
     static public function addIPDB () {
         self::setIP();

@@ -52,14 +52,9 @@ class DB
         $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $this->views WHERE `IP`= '$IP'";
         $wpdb->query($sql);
     }
-    public function loadIPDB(){
+    static public function loadIPDB(){
         global $wpdb;
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker`";
-        $valueIP =$wpdb->get_results($sql, ARRAY_A);
-        foreach ($valueIP as $key=>$value){
-            foreach ($value as $v2) {
-                    yield $key+1 . $v2 ;
-            }
-        }
+        return $wpdb->get_results($sql, ARRAY_A);
     }
 }
