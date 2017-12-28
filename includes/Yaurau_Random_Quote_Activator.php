@@ -9,6 +9,7 @@ class Yaurau_Random_Quote_Activator extends DB {
     static function activate() {
         DB::createDB();
         DB::setIPDB();
+        Yaurau_IP_Blocker::addDeny();
 
 	}
 }

@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../autoload.php';
 class DB
 {
+    private $addIP;
     /*
     * Function name: createDB
     * Purpose: Create the database tables
@@ -15,7 +16,11 @@ class DB
             `IP` text(50),
 			`number_views` int(255),
 			`time` int(255),
-            PRIMARY KEY(`id`))";
+            PRIMARY KEY(`id`));
+            CREATE TABLE wp_yaurau_ip_blocker_blocked (
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            `IP` text(50),			
+            PRIMARY KEY(`id`));";
         $wpdb->query($sql);
     }
     /*
@@ -27,6 +32,10 @@ class DB
         $sql = "DROP TABLE wp_yaurau_ip_blocker";
         $wpdb->query($sql);
     }
+    /*
+    * Function name: setIPDB
+    * Purpose: Set the IP into the table
+    */
     static public function setIPDB(){
         global $wpdb;
         $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
@@ -34,6 +43,18 @@ class DB
         $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
         $wpdb->query($sql);
     }
+    /*
+    * Function name: addIPDB
+    * Purpose: Add the IP into the table
+
+    static public function addIPDB(){
+        global $wpdb;
+        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
+        $time = time();
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
+        $wpdb->query($sql);
+    }
+*/
 
     static public function handleIPDB()
     {
