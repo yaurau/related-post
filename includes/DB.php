@@ -2,13 +2,11 @@
 require_once __DIR__ . '/../autoload.php';
 class DB
 {
-    private $db;
-    public $views;
     /*
     * Function name: createDB
     * Purpose: Create the database tables
     */
-    public function createDB()
+    static public function createDB()
     {
         global $wpdb;
         $sql =
@@ -24,12 +22,12 @@ class DB
     * Function name: dropDB
     * Purpose: Drop the database tables
     */
-    public function dropDB() {
+    static public function dropDB() {
         global $wpdb;
         $sql = "DROP TABLE wp_yaurau_ip_blocker";
         $wpdb->query($sql);
     }
-    public function setIPDB(){
+    static public function setIPDB(){
         global $wpdb;
         $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
         $time = time();
@@ -37,19 +35,19 @@ class DB
         $wpdb->query($sql);
     }
 
-    public function handleIPDB()
+    static public function handleIPDB()
     {
         global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']).'\r\n';
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->query($sql);
     }
-    public function counterViews()
+    static public function counterViews()
     {   global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']) . '\r\n';
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
-        $this->views =  $wpdb->get_var($sql) + 1;
-        $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $this->views WHERE `IP`= '$IP'";
+        $views =  $wpdb->get_var($sql) + 1;
+        $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '$IP'";
         $wpdb->query($sql);
     }
     static public function loadIPDB(){

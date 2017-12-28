@@ -7,8 +7,8 @@ class Yaurau_Random_Quote_Activator extends DB {
      */
 
     static function activate() {
-        $activate = new DB();
-        $activate->createDB();
-        $activate->setIPDB();
+        DB::createDB();
+        DB::setIPDB();
+
 	}
 }

@@ -27,7 +27,8 @@ class Yaurau_IP_Blocker implements IP_Blocker
     }
     public function countEnterIP(){
         $file = __DIR__ .'/../../../../.htaccess';
-        $data = '<br>'.'Order Allow,Deny' . '<br>' . 'Allow from' .  $this->set ;
+        $data = "Deny from ". $this->set . PHP_EOL;
+        //"Order Deny,Allow" . PHP_EOL .
         file_put_contents($file, $data, FILE_APPEND);
     }
     static public function addIPDB () {
@@ -45,4 +46,5 @@ class Yaurau_IP_Blocker implements IP_Blocker
             $count->counterViews();
         }
     }
+
 }
