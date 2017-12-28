@@ -4,23 +4,26 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">IP</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $gen = Yaurau_IP_Blocker::getIPDB();
-                    foreach ($gen as $key=>$val) {
-                    echo '<tr>'.'<th scope="row">' . ($key+1) . '</th>' . '<td>' . $val . '</td>' . '</tr>', PHP_EOL;
-                    }
-                    echo $gen->getReturn(), PHP_EOL;
-                    ?>
-                </tbody>
-            </table>
+            <form name="Blocked IP">
+                <table class="table">
+                    <thead>
+                     <tr>
+                         <th scope="col">#</th>
+                            <th scope="col">IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $gen = Yaurau_IP_Blocker::getIPDB();
+                        foreach ($gen as $key=>$val) {
+                        echo '<tr>'.'<th scope="row">' . '<input type="checkbox">' . ($key+1) . '</th>' . '<td>' . $val . '</td>' . '</tr>', PHP_EOL;
+                        }
+                        echo $gen->getReturn(), PHP_EOL;
+                        ?>
+                    </tbody>
+                </table>
+                <input type="submit"  value="Delete">
+            </form>
         </div>
         <div class="col-md-3"></div>
     </div>

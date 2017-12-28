@@ -28,8 +28,11 @@ class Yaurau_IP_Blocker implements IP_Blocker
     public function enterIP(){
         $file = __DIR__ .'/../../../../.htaccess';
         $data = "Deny from ". $this->set . PHP_EOL;
-        //"Order Deny,Allow" . PHP_EOL .
         file_put_contents($file, $data, FILE_APPEND);
+        $add = new DB();
+        $add->addIP = $this->set;
+        $add->addIPDB();
+
     }
     static public function addIPDB () {
         self::setIP();
@@ -39,11 +42,10 @@ class Yaurau_IP_Blocker implements IP_Blocker
         //$this->set=
            // return $setIP->handleIPDB();
         if($setIP->handleIPDB() == NULL){
-            return 'FALSE';
+            DB::setIPDB();
         }
         else {
-            $count = new DB;
-            $count->counterViews();
+            DB::counterViews();
         }
     }
     static public function addDeny(){
