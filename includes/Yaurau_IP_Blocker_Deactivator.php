@@ -9,5 +9,4 @@ class Yaurau_IP_Blocker_Deactivator extends DB {
         DB::dropDBIpBlocked();
         DB::dropDBIpBlocker();
 	}
-
 }

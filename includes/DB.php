@@ -44,6 +44,13 @@ class DB
         $sql = "DROP TABLE wp_yaurau_ip_blocked;";
         $wpdb->query($sql);
     }
+    public function deletIPDB()
+    {
+        global $wpdb;
+        $sql = "DELETE FROM `wp_yaurau_ip_blocked` WHERE `IP` = '$this->addIP';";
+        return $wpdb->query($sql);
+    }
+
     /*
     * Function name: setIPDB
     * Purpose: Set the IP into the table
