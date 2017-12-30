@@ -43,14 +43,17 @@
     </form>
     </p>
     <?php
-    if(!empty($_POST['firstblockIP'])&&!empty($_POST['secondblockIP'])&& !empty($_POST['thirdblockIP'])&&!empty($_POST['fourthblockIP']))
+    if(!empty($_POST['firstblockIP'])&&!empty($_POST['secondblockIP'])&& !empty($_POST['thirdblockIP'])&&!empty($_POST['fourthblockIP'])&& is_numeric($_POST['firstblockIP']) && is_numeric($_POST['secondblockIP']) && is_numeric($_POST['thirdblockIP']) && is_numeric($_POST['fourthblockIP']))
     {
         $l = new Yaurau_IP_Blocker();
         $l->set = $_POST['firstblockIP'] .'.'. $_POST['secondblockIP'] . '.' .$_POST['thirdblockIP'] . '.' . $_POST['fourthblockIP'];
         $l->enterIP();
         echo "IP $l->set blocked";
     }
-    if($_POST['submit'] && (empty($_POST['firstblockIP']) || empty($_POST['secondblockIP'])|| empty($_POST['thirdblockIP'])|| empty($_POST['fourthblockIP'] ))) {
+    if($_POST['submit'] &&
+        (empty($_POST['firstblockIP']) || empty($_POST['secondblockIP'])|| empty($_POST['thirdblockIP'])|| empty($_POST['fourthblockIP']) || !is_numeric($_POST['firstblockIP']) || !is_numeric($_POST['secondblockIP']) || !is_numeric($_POST['thirdblockIP']) || !is_numeric($_POST['fourthblockIP'])
+        )
+    ) {
         $IP = $_POST['firstblockIP'] .'.'. $_POST['secondblockIP'] . '.' .$_POST['thirdblockIP'] . '.' . $_POST['fourthblockIP'];
         echo "Incorrect IP $IP";
     }
@@ -88,10 +91,6 @@
         $IP = $_POST['firstblockIPv6'] .':'. $_POST['secondblockIPv6'] . ':' .$_POST['thirdblockIPv6'] . ':' . $_POST['fourthblockIPv6']. ':' . $_POST['fifthblockIPv6']. ':' . $_POST['sixthblockIPv6'] . ':' . $_POST['seventhblockIPv6']. ':' . $_POST['eighthblockIPv6'];
         echo "Incorrect IP $IP";
     }
-    /*$_POST['firstblockIPv6'] = 10;
-    if(!is_numeric ($_POST['firstblockIPv6'])){
-        echo "Ok";
-    }*/
     ?>
     <form action="options.php" method="POST">
         <?php
@@ -102,5 +101,8 @@
         ?>
     </form>
 </div>
+<?php
+    Yaurau_IP_Blocker::deleteIPBlocked();
+?>
 
 

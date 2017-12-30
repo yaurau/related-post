@@ -53,5 +53,9 @@ class Yaurau_IP_Blocker implements IP_Blocker
         $data = "Order Deny,Allow" . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
     }
-
+    static public function deleteIPBlocked(){
+        $file = __DIR__ .'/../../../../.htaccess';
+        $data = file_get_contents($file);
+        preg_replace('/Deny from f.f.w.w/','', $data);
+    }
 }
