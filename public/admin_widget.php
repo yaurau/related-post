@@ -24,9 +24,9 @@
                 </table>
                 <input align="right" type="submit"  value="Delete">
                 <?php
-                    $delete = new DB;
-                    $delete->addIP = $_POST['delete'];
-                    echo $delete->deletIPDB();
+                    $delete = new Yaurau_IP_Blocker();
+                    $delete->setIP = $_POST['delete'];
+                    $delete->deleteIPBlocked();
                 ?>
             </form>
         </div>
@@ -101,8 +101,7 @@
         ?>
     </form>
 </div>
-<?php
-    Yaurau_IP_Blocker::deleteIPBlocked();
-?>
+
+
 
 

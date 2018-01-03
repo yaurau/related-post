@@ -13,6 +13,7 @@ interface IP_Blocker {
 class Yaurau_IP_Blocker implements IP_Blocker
 {
     public $set;
+    public $setIP;
     static public function setIP(){
         $setIP = new DB;
         $setIP->setIPDB();
@@ -53,9 +54,15 @@ class Yaurau_IP_Blocker implements IP_Blocker
         $data = "Order Deny,Allow" . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
     }
-    static public function deleteIPBlocked(){
+    public function deleteIPBlocked(){
         $file = __DIR__ .'/../../../../.htaccess';
         $data = file_get_contents($file);
-        preg_replace('/Deny from f.f.w.w/','', $data);
+        $l = 'Deny from ' . $this->setIP;
+        $replace = str_replace($l,'', $data);
+        file_put_contents($file, $replace);
+        $delete = new DB;
+        $delete->addIP = $this->setIP;
+        $delete->deletIPDB();
+
     }
 }
