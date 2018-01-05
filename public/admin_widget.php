@@ -20,33 +20,43 @@
                                 echo $h;
 
                         }*/
-                        $gen = Yaurau_IP_Blocker::getIPDB();                                foreach ($gen as $key=>$val) {
-                        echo '<tr>'.'<th scope="row">' . '<input type="checkbox" name ="delete" value="' . $val .'">' . ($key+1) . '</th>' . '<td>' . json_encode($val) . '</td>' . '</tr>', PHP_EOL;
+                        $gen = Yaurau_IP_Blocker::getIPDB();                                                     foreach ($gen as $key=>$val) {
+                            echo '<tr>'.'<th scope="row">' . '<input type="checkbox" name ="delete" value="' . $val .'">' . ($key+1) . '</th>' . '<td>' . ($val) . '</td>' . '</tr>', PHP_EOL;
                         }
-                        echo $gen->getReturn(), PHP_EOL;
-                        $l = DB::loadIPDB();
+                        //echo $gen->getReturn(), PHP_EOL;
+                        /*$l = DB::loadIPDB();
                         echo $d = json_encode($l);
                         $t = [];
                         $t = json_decode($d);
-                        var_dump($t);
+                        var_dump($t);*/
                         ?>
+                    <script>
+                        jQuery.post(
+                            "posts.php",
+                            {
+                                param1: "param1",
+                                param2: 2
+                            },
+                            onAjaxSuccess
+                            );
+                        function onAjaxSuccess(data)
+                        {
+                            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+                            document.write(data);
+                        }
+                    </script>
+                    <script>
+                        document.write("Hello");
+                    </script>
                     </tbody>
                 </table>
                 <input align="right" type="submit"  value="Delete">
                 <?php
                     if(!empty($_POST['delete'])){
                         $delete = new Yaurau_IP_Blocker();                                 $delete->setIP = $_POST['delete'];
-                        $delete->deleteIPBlocked();}
-                    else{
-                        echo "Ничего не выбрано";
-
+                        $delete->deleteIPBlocked();
                     }
-                echo $gen->getReturn(), PHP_EOL;
-                $l = DB::loadIPDB();
-                echo $d = json_encode($l);
-                $t = [];
-                $t = json_decode($d);
-                var_dump($t);
+
                 ?>
             </form>
         </div>
