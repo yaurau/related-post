@@ -30,24 +30,8 @@
                         $t = json_decode($d);
                         var_dump($t);*/
                         ?>
-                    <script>
-                        jQuery.post(
-                            "posts.php",
-                            {
-                                param1: "param1",
-                                param2: 2
-                            },
-                            onAjaxSuccess
-                            );
-                        function onAjaxSuccess(data)
-                        {
-                            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-                            document.write(data);
-                        }
-                    </script>
-                    <script>
-                        document.write("Hello");
-                    </script>
+
+
                     </tbody>
                 </table>
                 <input align="right" type="submit"  value="Delete">
@@ -131,7 +115,24 @@
         ?>
     </form>
 </div>
+<script>
+    //setTimeout('window.location.reload()', 1);
+</script>
+<input type="checkbox" id="checkbox" class="1" value="1" /> пункт 1<br />
+<div class="checkbox1" style="display:none">
+    <p>Содержимое блока, который<br />
+        открывается при отмеченном чебоксе.</p>
+</div>
 
-
-
-
+jQuery
+<script>
+    jQuery('input[id=checkbox]').change(function(){
+        if(jQuery(this).attr('checked') == true)
+        {
+            jQuery('.checkbox'+$(this).attr('class')).show(1000);
+        }
+        else{
+            jQuery('.checkbox'+$(this).attr('class')).hide(1000);
+        }
+    });
+</script>
