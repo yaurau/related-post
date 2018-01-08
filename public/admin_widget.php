@@ -30,24 +30,7 @@
                         $t = json_decode($d);
                         var_dump($t);*/
                         ?>
-                    <script>
-                        jQuery.post(
-                            "posts.php",
-                            {
-                                param1: "param1",
-                                param2: 2
-                            },
-                            onAjaxSuccess
-                            );
-                        function onAjaxSuccess(data)
-                        {
-                            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-                            document.write(data);
-                        }
-                    </script>
-                    <script>
-                        document.write("Hello");
-                    </script>
+
                     </tbody>
                 </table>
                 <input align="right" type="submit"  value="Delete">
@@ -131,7 +114,38 @@
         ?>
     </form>
 </div>
+<script>
+    jQuery.post(
+        "posts.php",
+        {
+            param1: "param1",
+            param2: 2
+        },
+        onAjaxSuccess
+    );
+    function onAjaxSuccess(data)
+    {
+        // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+        document.write(data);
+    }
+</script>
+<a id="all" href="javascript:void(0);">Отметить все</a>
+<div class="all">
+    <p><input type="checkbox" value="1"> чебокс 1</p>
+    <p><input type="checkbox" value="2"> чебокс 2</p>
+    <p><input type="checkbox" value="3"> чебокс 3</p>
+    <p><input type="checkbox" value="4"> чебокс 4</p>
+    <p><input type="checkbox" value="5"> чебокс 5</p>
+</div>
+<script>
+    jQuery('#all').click(function(){
+        jQuery('.all input:checkbox').click();
+    });
+</script>
 
+<script>
+    jQuery.post("test.php", { name: "John", time: "2pm" } );
+</script>
 
 
 
