@@ -40,8 +40,6 @@ class Yaurau_IP_Blocker implements IP_Blocker
     }
     static public function handleIP (){
         $setIP = new DB;
-        //$this->set=
-           // return $setIP->handleIPDB();
         if($setIP->handleIPDB() == NULL){
             DB::setIPDB();
         }

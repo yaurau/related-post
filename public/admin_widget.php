@@ -107,13 +107,13 @@
     ?>
     <form action="options.php" method="POST">
         <?php
-        settings_fields( 'new_option' );     // скрытые защитные поля - nonce
-        do_settings_sections( MY_PLAGIN_PAGE ); // секции с настройками (опциями). У нас она всего одна 'section_id'
+        settings_fields( 'new_option' );
+        do_settings_sections( MY_PLAGIN_PAGE );
         submit_button();
-        echo get_option('some_other_option');
         ?>
     </form>
 </div>
+
 <script>
     jQuery.post(
         "posts.php",
@@ -146,6 +146,6 @@
 <script>
     jQuery.post("test.php", { name: "John", time: "2pm" } );
 </script>
-
+<?php echo get_option('some_other_option');?>
 
 
