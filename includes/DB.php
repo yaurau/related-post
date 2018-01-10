@@ -86,13 +86,13 @@ class DB
             $l = new Yaurau_IP_Blocker();
             $l->set = $_SERVER ['REMOTE_ADDR'];
             $l->enterIP();
-            echo "IP $l->set blocked";
         }
-        else{
-            $views =  $wpdb->get_var($sql) + 1;
+        else {
+            $views = $wpdb->get_var($sql) + 1;
             $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '$IP'";
             $wpdb->query($sql);
         }
+
     }
     static public function loadIPDB(){
         global $wpdb;

@@ -14,32 +14,23 @@
                     </thead>
                     <tbody>
                         <?php
-
-                        /*foreach ($l as $item) {
-                            foreach($item as $h)
-                                echo $h;
-
-                        }*/
-                        $gen = Yaurau_IP_Blocker::getIPDB();                                                     foreach ($gen as $key=>$val) {
-                            echo '<tr>'.'<th scope="row">' . '<input type="checkbox" name ="delete" value="' . $val .'">' . ($key+1) . '</th>' . '<td>' . ($val) . '</td>' . '</tr>', PHP_EOL;
+                        $gen = Yaurau_IP_Blocker::getIPDB();
+                        foreach ($gen as $key=>$val) {
+                        echo '<tr>'.'<th scope="row">' . '<input type="checkbox" name ="delete" value="' . $val .'">' . ($key+1) . '</th>' . '<td>' . $val . '</td>' . '</tr>', PHP_EOL;
                         }
-                        //echo $gen->getReturn(), PHP_EOL;
-                        /*$l = DB::loadIPDB();
-                        echo $d = json_encode($l);
-                        $t = [];
-                        $t = json_decode($d);
-                        var_dump($t);*/
+                        echo $gen->getReturn(), PHP_EOL;
                         ?>
-
                     </tbody>
                 </table>
                 <input align="right" type="submit"  value="Delete">
                 <?php
                     if(!empty($_POST['delete'])){
-                        $delete = new Yaurau_IP_Blocker();                                 $delete->setIP = $_POST['delete'];
-                        $delete->deleteIPBlocked();
-                    }
+                        $delete = new Yaurau_IP_Blocker();                                $delete->setIP = $_POST['delete'];
+                        $delete->deleteIPBlocked();}
+                    else{
+                        echo "Ничего не выбрано";
 
+                    }
                 ?>
             </form>
         </div>
@@ -107,45 +98,14 @@
     ?>
     <form action="options.php" method="POST">
         <?php
-        settings_fields( 'new_option' );
-        do_settings_sections( MY_PLAGIN_PAGE );
+        settings_fields( 'new_option' );     // скрытые защитные поля - nonce
+        do_settings_sections( MY_PLAGIN_PAGE ); // секции с настройками (опциями). У нас она всего одна 'section_id'
         submit_button();
+        echo get_option('some_other_option');
         ?>
     </form>
 </div>
 
-<script>
-    jQuery.post(
-        "posts.php",
-        {
-            param1: "param1",
-            param2: 2
-        },
-        onAjaxSuccess
-    );
-    function onAjaxSuccess(data)
-    {
-        // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-        document.write(data);
-    }
-</script>
-<a id="all" href="javascript:void(0);">Отметить все</a>
-<div class="all">
-    <p><input type="checkbox" value="1"> чебокс 1</p>
-    <p><input type="checkbox" value="2"> чебокс 2</p>
-    <p><input type="checkbox" value="3"> чебокс 3</p>
-    <p><input type="checkbox" value="4"> чебокс 4</p>
-    <p><input type="checkbox" value="5"> чебокс 5</p>
-</div>
-<script>
-    jQuery('#all').click(function(){
-        jQuery('.all input:checkbox').click();
-    });
-</script>
 
-<script>
-    jQuery.post("test.php", { name: "John", time: "2pm" } );
-</script>
-<?php echo get_option('some_other_option');?>
 
 
