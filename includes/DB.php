@@ -102,4 +102,10 @@ class DB
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->get_results($sql, ARRAY_A);
     }
+    static public function getViews(){
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
 }
