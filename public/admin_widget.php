@@ -106,7 +106,7 @@
     </form>
 </div>
 <?php
-echo Yaurau_IP_Blocker_Time::resetTime();
+echo Yaurau_IP_Blocker_Parser::resetTime();
 
 
 

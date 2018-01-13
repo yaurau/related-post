@@ -79,17 +79,9 @@ class DB
     {   global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
-        $max = (get_option('option'));
-        if(($wpdb->get_var($sql)) >= $max['input']){
-            $l = new Yaurau_IP_Blocker();
-            $l->set = $_SERVER ['REMOTE_ADDR'];
-            $l->enterIP();
-        }
-        else {
             $views = $wpdb->get_var($sql) + 1;
             $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '$IP'";
             $wpdb->query($sql);
-        }
     }
     static public function loadIPDB(){
         global $wpdb;
@@ -100,12 +92,12 @@ class DB
         global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
-        return $wpdb->get_results($sql, ARRAY_A);
+        return $wpdb->get_results($sql, OBJECT);
     }
     static public function getViews(){
         global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
-        return $wpdb->get_results($sql, ARRAY_A);
+        return $wpdb->get_results($sql, OBJECT);
     }
 }
