@@ -44,7 +44,7 @@ class Yaurau_IP_Blocker implements IP_Blocker
             DB::setIPDB();
         }
         else {
-            Yaurau_IP_Blocker_Parser::resetTime();
+            Yaurau_IP_Blocker_Parser::parse();
         }
     }
     static public function addDeny(){

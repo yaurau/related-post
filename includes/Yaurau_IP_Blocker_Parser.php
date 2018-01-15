@@ -1,7 +1,7 @@
 <?php
 class Yaurau_IP_Blocker_Parser
 {
-    static public function resetTime(){
+    static public function parse(){
         $max = (get_option('option'));
         $countViews = DB::getViews()[0]->number_views;
         $timeCreate = DB::getTime()[0]->time;
