@@ -106,6 +106,7 @@
     </form>
 </div>
 
-
+<?php
+Yaurau_IP_Blocker_Parser::parse();
 
 
