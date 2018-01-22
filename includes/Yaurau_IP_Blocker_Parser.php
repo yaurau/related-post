@@ -14,7 +14,6 @@ class Yaurau_IP_Blocker_Parser
             $l->enterIP();
 */
         }
-        echo $time;
         if ($time > 86400){
             //echo "DELETE";
             DB::deletIP();

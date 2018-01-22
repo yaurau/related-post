@@ -7,22 +7,30 @@
             <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post" >
                 <table class="table">
                     <thead>
-                     <tr>
-                         <th scope="col">#</th>
-                            <th scope="col">IP</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">IP</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $gen = Yaurau_IP_Blocker::getIPDB();
-                        foreach ($gen as $key=>$val) {
-                        echo '<tr>'.'<th scope="row">' . '<input type="checkbox" name ="delete" value="' . $val .'">' . ($key+1) . '</th>' . '<td>' . $val . '</td>' . '</tr>', PHP_EOL;
-                        }
-                        echo $gen->getReturn(), PHP_EOL;
-                        ?>
+                    <?php
+                    $gen = Yaurau_IP_Blocker::getIPDB();
+                    foreach ($gen as $key=>$val) { ?>
+                        <tr>
+                            <th scope="row">
+                                <input type="checkbox" name ="delete" value="<?php echo $val; ?>">
+                                <?php echo ($key+1); ?>
+                            </th>
+                            <td class="<?php echo 1; ?>">
+                                <?php echo $val.'-'.$key; ?>
+                            </td>
+                        </tr>
+                    <?php } echo $gen->getReturn(), PHP_EOL; ?>
                     </tbody>
                 </table>
-                <input align="right" type="submit"  value="Delete">
+                <input align="right" type="submit"  value="Delete" id="btn">
+
+                <?php echo $_POST['delete'] ?>
                 <?php
                     if(!empty($_POST['delete'])){
                         $delete = new Yaurau_IP_Blocker();                                $delete->setIP = $_POST['delete'];
@@ -33,6 +41,14 @@
                     }
                 ?>
             </form>
+            <script>
+                jQuery(document).ready(function(){
+                    jQuery('#btn').click(function(){
+                        jQuery('td.<?php echo $_POST['delete']; ?>').css('background', '#CC0000')
+                    })
+                })
+            </script>
+
         </div>
         <div class="col-md-3"></div>
     </div>
@@ -106,7 +122,9 @@
     </form>
 </div>
 
-<?php
-Yaurau_IP_Blocker_Parser::parse();
+
+
+
+
 
 
