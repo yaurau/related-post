@@ -33,7 +33,8 @@
                 <?php echo $_POST['delete'] ?>
                 <?php
                     if(!empty($_POST['delete'])){
-                        $delete = new Yaurau_IP_Blocker();                                $delete->setIP = $_POST['delete'];
+                        $delete = new Yaurau_IP_Blocker();
+                        $delete->setIP = $_POST['delete'];
                         $delete->deleteIPBlocked();}
                     else{
                         echo "Ничего не выбрано";
