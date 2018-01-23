@@ -5,29 +5,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-6">
             <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post" >
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">IP</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $gen = Yaurau_IP_Blocker::getIPDB();
-                    foreach ($gen as $key=>$val) { ?>
-                        <tr>
-                            <th scope="row">
-                                <input type="checkbox" name ="delete" value="<?php echo $val; ?>">
-                                <?php echo ($key+1); ?>
-                            </th>
-                            <td class="<?php echo 1; ?>">
-                                <?php echo $val.'-'.$key; ?>
-                            </td>
-                        </tr>
-                    <?php } echo $gen->getReturn(), PHP_EOL; ?>
-                    </tbody>
-                </table>
+                <?php include_once __DIR__ . '/table_blocked_ IP.php';?>
                 <input align="right" type="submit"  value="Delete" id="btn">
 
                 <?php echo $_POST['delete'] ?>
@@ -42,14 +20,6 @@
                     }
                 ?>
             </form>
-            <script>
-                jQuery(document).ready(function(){
-                    jQuery('#btn').click(function(){
-                        jQuery('td.<?php echo $_POST['delete']; ?>').css('background', '#CC0000')
-                    })
-                })
-            </script>
-
         </div>
         <div class="col-md-3"></div>
     </div>
