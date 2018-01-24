@@ -1,28 +1,7 @@
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
     <p><h3>Blocked IP</h3></p>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
-            <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post" >
-                <?php include_once __DIR__ . '/table_blocked_ IP.php';?>
-                <input align="right" type="submit"  value="Delete" id="btn">
-
-                <?php echo $_POST['delete'] ?>
-                <?php
-                    if(!empty($_POST['delete'])){
-                        $delete = new Yaurau_IP_Blocker();
-                        $delete->setIP = $_POST['delete'];
-                        $delete->deleteIPBlocked();}
-                    else{
-                        echo "Ничего не выбрано";
-
-                    }
-                ?>
-            </form>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
+    <?php include_once __DIR__ . '/table_blocked_ IP.php';?>
     <p><h3>Add IPv4</h3>
     <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post">
         <label>Enter the IP</label>

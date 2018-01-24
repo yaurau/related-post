@@ -1,14 +1,10 @@
-<div class="container">
-    <br />
-    <br />
-    <br />
+<div class="container" >
     <div class="table-responsive">
         <table id="editable_table" class="table table-bordered table-striped">
             <thead>
             <tr>
                 <th>#</th>
                 <th>IP</th>
-                <th>Test</th>
             </tr>
             </thead>
             <tbody>
@@ -18,8 +14,7 @@
             echo '
       <tr>
        <td>'. ($key+1) .  '</td>  
-       <td>'. $val .'</td>
-       <td>'. 3 .'</td>
+       <td>'. $val .'</td>       
       </tr>
       ';
              }
@@ -35,7 +30,7 @@
             url:'actio.php',
             columns:{
                 identifier:[0, "id"],
-                editable:[[1, 'first_name'], [2, 'last_name']]
+                editable:[[1, 'IP']]
             },
             restoreButton:false,
             onSuccess:function(data, textStatus, jqXHR)
