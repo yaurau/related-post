@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container-fluid"" >
     <div class="table-responsive">
         <table id="editable_table" class="table table-bordered table-striped">
             <thead>
@@ -27,12 +27,13 @@
 <script>
     jQuery(document).ready(function(){
         jQuery('#editable_table').Tabledit({
-            url:'actio.php',
+            url:'action.php',
             columns:{
                 identifier:[0, "id"],
                 editable:[[1, 'IP']]
             },
             restoreButton:false,
+            editButton: false,
             onSuccess:function(data, textStatus, jqXHR)
             {
                 if(data.action == 'delete')
