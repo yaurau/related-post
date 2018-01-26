@@ -7,7 +7,7 @@ class Yaurau_IP_Blocker_Parser
         $timeCreate = DB::getTime()[0]->time;
         $time = time() - $timeCreate;
         if(($countViews >= $max['input'])){// && ($time < 86400)){
-                      echo 'Block IP';
+                      //echo 'Block IP';
               /*          $l = new Yaurau_IP_Blocker();
                         $l->set = $_SERVER ['REMOTE_ADDR'];
                         $l->enterIP();

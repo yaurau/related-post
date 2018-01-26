@@ -28,9 +28,23 @@
     jQuery(document).ready(function(){
         jQuery('#editable_table').Tabledit({
             url:'action.php',
+            rowIdentifier: 'data-id',
+            editButton: false,
+            restoreButton: false,
+            buttons: {
+                delete: {
+                    class: 'btn btn-sm btn-danger',
+                    html: '<span class="glyphicon glyphicon-trash"></span> &nbsp DELETE',
+                    action: 'delete'
+                },
+                confirm: {
+                    class: 'btn btn-sm btn-default',
+                    html: 'Are you sure?'
+                }
+            },
             columns:{
-                identifier:[0, "id"],
-                editable:[[1, 'IP']]
+                identifier:[1, 'IP'],
+                editable:[[0, '#']]
             },
             restoreButton:false,
             editButton: false,
@@ -42,6 +56,5 @@
                 }
             }
         });
-
     });
 </script>
