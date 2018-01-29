@@ -30,7 +30,7 @@ class Yaurau_Random_Quote_Admin
     static public function getCreateMenu() {
         add_action( 'admin_menu', [__CLASS__, 'createMenu']);
         add_action( 'admin_init', [__CLASS__,'my_register_settings'] );
-        add_action( 'admin_head', 'doll_css' );
+        //add_action( 'admin_head', 'doll_css' );
 
     }
     static public function getSettingsLink( $actions )
