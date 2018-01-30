@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
     elseif (file_exists(__DIR__ . '/public/' . $class . '.php')) {
         require_once __DIR__ . '/public/' . $class . '.php';
     }
-    elseif (file_exists(__DIR__ . '/public/function.php')) {
-        require_once __DIR__ . '/public/function.php';
-    }
 });
+if (file_exists(__DIR__ . '/public/function.php')) {
+require_once __DIR__ . '/public/function.php';
+}

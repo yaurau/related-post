@@ -18,8 +18,8 @@ class Yaurau_Random_Quote_Admin
             );
             add_settings_field(
                 'IP',
-                'Enter the maximum number of hits',
-                'msp_helloworld_authorbox_field',
+                'Enter the maximum number of hits (at least 300)',
+                'msp_field',
                 MY_PLAGIN_PAGE,
                 'eg_setting_section'
             );
@@ -29,10 +29,7 @@ class Yaurau_Random_Quote_Admin
      }
     static public function getCreateMenu() {
         add_action( 'admin_menu', [__CLASS__, 'createMenu']);
-        add_action( 'admin_init', [__CLASS__,'my_register_settings'] );
-        //add_action( 'admin_head', 'doll_css' );
-
-    }
+        add_action( 'admin_init', [__CLASS__,'my_register_settings'] );     }
     static public function getSettingsLink( $actions )
     {
         $actions['settings'] = '<a href="options-general.php?page=yaurau_ip_blocker">Settings</a>';
