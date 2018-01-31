@@ -23,11 +23,10 @@
         </table>
     </div>
 </div>
-
 <script>
     jQuery(document).ready(function(){
         jQuery('#editable_table').Tabledit({
-            url: '<?php echo plugin_dir_url(__FILE__). 'action.php';?>',
+            url: '<?php echo preg_replace('/public/', 'includes', plugin_dir_url(__FILE__). 'table_action.php');?>',
             rowIdentifier: 'data-id',
             editButton: false,
             restoreButton: false,
