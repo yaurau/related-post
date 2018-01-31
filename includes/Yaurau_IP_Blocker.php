@@ -42,6 +42,8 @@ class Yaurau_IP_Blocker implements IP_Blocker
         $setIP = new DB;
         if($setIP->handleIPDB() == NULL){
             DB::setIPDB();
+            setcookie('IP_blocker', 1 , 86400);
+
         }
         else {
             Yaurau_IP_Blocker_Parser::parse();
