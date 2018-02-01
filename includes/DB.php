@@ -14,8 +14,7 @@ class DB
             "CREATE TABLE wp_yaurau_ip_blocker (
             id INT(11) NOT NULL AUTO_INCREMENT,
             `IP` text(50),
-			`number_views` int(255),
-			`time` int(255),
+			`number_views` int(255)
             PRIMARY KEY(`id`));";
         $wpdb->query($sql);
     }
@@ -62,8 +61,7 @@ class DB
     static public function setIPDB(){
         global $wpdb;
         $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
-        $time = time();
-        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`, `time`) VALUES  ('$IP', '1','$time')";
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`) VALUES  ('$IP', '1')";
         $wpdb->query($sql);
     }
     /*
@@ -95,12 +93,13 @@ class DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
-    static public function getTime(){
+ /*   static public function getTime(){
         global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
+ */
     static public function getViews(){
         global $wpdb;
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
