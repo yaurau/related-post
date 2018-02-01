@@ -1,7 +1,11 @@
 <?php
 class Yaurau_IP_Blocker_Parser
 {
-    static public function parse(){
+    /*
+    * Function name: getIPDB
+    * Purpose: parsing the query
+    */
+    static public function parseQuery(){
         $max = (get_option('option'));
         $countViews = DB::getViews()[0]->number_views;
         $timeCreate = DB::getTime()[0]->time;

@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../autoload.php';
 class Yaurau_Random_Quote_Admin
 {
-     static public function createMenu()
+
+    static public function createMenu()
      {
          add_options_page( 'IP Blocker', 'Yaurau IP Blocker', 'manage_options', 'yaurau_ip_blocker', [__CLASS__,'settings_page'] );
     }
