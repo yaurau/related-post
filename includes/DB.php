@@ -107,4 +107,12 @@ class DB
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
+    static public function updateData(){
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $time = time();
+        $views = 1;
+        $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views, `time`= $time WHERE `IP`= '$IP'";
+        $wpdb->query($sql);
+    }
 }
