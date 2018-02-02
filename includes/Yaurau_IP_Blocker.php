@@ -24,6 +24,9 @@ class Yaurau_IP_Blocker
         }
     }
     /*
+    * Function name: enterIP
+    * Purpose: get IP
+    */
     public function enterIP(){
         $file = __DIR__ .'/../../../../.htaccess';
         $data = "Deny from ". $this->set . PHP_EOL;
@@ -32,7 +35,7 @@ class Yaurau_IP_Blocker
         $add->addIP = $this->set;
         $add->addIPDB();
     }
-    /*
+ /*
     static public function addIPDB () {
         self::setIP();
     }
