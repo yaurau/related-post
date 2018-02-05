@@ -24,7 +24,7 @@ echo "<script src=\"$path\"></script>";
     $second = $_POST['secondblockIP'];
     $third = $_POST['thirdblockIP'];
     $forth = $_POST['fourthblockIP'];
-    if(!empty($first)&&!empty($second)&& !empty($third)&&!empty($forth)&& is_numeric($first) && is_numeric($second) && is_numeric($third) && is_numeric($forth)&& ($first<=255) && ($first>=0)&& ($second<=255) && ($second>=0)&& ($third<=255) && ($third>=0)&& ($forth<=255) && ($forth>=0))
+    if(isset($first) && isset($second)&& isset($third)&& isset($forth)&& is_numeric($first) && is_numeric($second) && is_numeric($third) && is_numeric($forth) && ($first<=255) && ($first>=0)&& ($second<=255) && ($second>=0)&& ($third<=255) && ($third>=0)&& ($forth<=255) && ($forth>=0))
     {
         $l = new Yaurau_IP_Blocker();
         $l->set = $first .'.'. $second . '.' .$third . '.' . $forth;
@@ -60,8 +60,7 @@ echo "<script src=\"$path\"></script>";
     $sixthIPv6 = $_POST['sixthblockIPv6'];
     $seventhIPv6 = $_POST['seventhblockIPv6'];
     $eighthIPv6 = $_POST['eighthblockIPv6'];
-
-    if(!empty($firstIPv6)&&!empty($secondIPv6) && !empty($thirdIPv6)&&!empty($forthIPv6) &&!empty($fifthIPv6) && !empty($sixthIPv6 ) && !empty($seventhIPv6) && !empty($eighthIPv6) && is_numeric($firstIPv6) && is_numeric($secondIPv6) && is_numeric($thirdIPv6) && is_numeric($forthIPv6) && is_numeric($fifthIPv6) && is_numeric($sixthIPv6 )  && is_numeric($seventhIPv6) && is_numeric($eighthIPv6)&& ($firstIPv6<=255) && ($firstIPv6>=0)&& ($secondIPv6<=255) && ($secondIPv6>=0)&& ($thirdIPv6<=255) && ($thirdIPv6>=0)&& ($forthIPv6<=255) && ($forthIPv6>=0) && ($fifthIPv6<=255) && ($fifthIPv6>=0)&& ($sixthIPv6<=255) && ($sixthIPv6>=0)&& ($seventhIPv6<=255) && ($seventhIPv6>=0)&& ($eighthIPv6<=255) && ($eighthIPv6>=0))
+    if(isset($firstIPv6) && isset($secondIPv6) && isset($thirdIPv6) && isset($forthIPv6) && isset($fifthIPv6) && isset($sixthIPv6 ) && isset($seventhIPv6) && isset($eighthIPv6) && is_numeric($firstIPv6) && is_numeric($secondIPv6) && is_numeric($thirdIPv6) && is_numeric($forthIPv6) && is_numeric($fifthIPv6) && is_numeric($sixthIPv6 )  && is_numeric($seventhIPv6) && is_numeric($eighthIPv6) && ($firstIPv6<=255) && ($firstIPv6>=0) && ($secondIPv6<=255) && ($secondIPv6>=0)&& ($thirdIPv6<=255) && ($thirdIPv6>=0)&& ($forthIPv6<=255) && ($forthIPv6>=0) && ($fifthIPv6<=255) && ($fifthIPv6>=0)&& ($sixthIPv6<=255) && ($sixthIPv6>=0)&& ($seventhIPv6<=255) && ($seventhIPv6>=0)&& ($eighthIPv6<=255) && ($eighthIPv6>=0))
     {
         $l = new Yaurau_IP_Blocker();
         $l->set = $firstIPv6 .':'. $secondIPv6 .':'. $thirdIPv6 .':'. $forthIPv6 .':'. $fifthIPv6 .':'. $sixthIPv6 .':'. $seventhIPv6 .':'.$eighthIPv6;
