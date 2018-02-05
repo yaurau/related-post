@@ -20,17 +20,19 @@ echo "<script src=\"$path\"></script>";
     </form>
     </p>
     <?php
-    if(!empty($_POST['firstblockIP'])&&!empty($_POST['secondblockIP'])&& !empty($_POST['thirdblockIP'])&&!empty($_POST['fourthblockIP'])&& is_numeric($_POST['firstblockIP']) && is_numeric($_POST['secondblockIP']) && is_numeric($_POST['thirdblockIP']) && is_numeric($_POST['fourthblockIP']))
+    $first = $_POST['firstblockIP'];
+    $second = $_POST['secondblockIP'];
+    $third = $_POST['thirdblockIP'];
+    $forth = $_POST['fourthblockIP'];
+    if(!empty($first)&&!empty($second)&& !empty($third)&&!empty($forth)&& is_numeric($first) && is_numeric($second) && is_numeric($third) && is_numeric($forth)&& ($first<=255) && ($first>=0)&& ($second<=255) && ($second>=0)&& ($third<=255) && ($third>=0)&& ($forth<=255) && ($forth>=0))
     {
         $l = new Yaurau_IP_Blocker();
-        $l->set = $_POST['firstblockIP'] .'.'. $_POST['secondblockIP'] . '.' .$_POST['thirdblockIP'] . '.' . $_POST['fourthblockIP'];
+        $l->set = $first .'.'. $second . '.' .$third . '.' . $forth;
         $l->enterIP();
         echo "IP $l->set blocked";
     }
-    if($_POST['submit'] &&
-        (empty($_POST['firstblockIP']) || empty($_POST['secondblockIP'])|| empty($_POST['thirdblockIP'])|| empty($_POST['fourthblockIP']) || !is_numeric($_POST['firstblockIP']) || !is_numeric($_POST['secondblockIP']) || !is_numeric($_POST['thirdblockIP']) || !is_numeric($_POST['fourthblockIP'])
-        )
-    ) {
+    elseif($_POST['submit'])
+     {
         $IP = $_POST['firstblockIP'] .'.'. $_POST['secondblockIP'] . '.' .$_POST['thirdblockIP'] . '.' . $_POST['fourthblockIP'];
         echo "Incorrect IP $IP";
     }
@@ -50,22 +52,24 @@ echo "<script src=\"$path\"></script>";
     </form>
     </p>
     <?php
-    if(!empty($_POST['firstblockIPv6'])&&!empty($_POST['secondblockIPv6']) && !empty($_POST['thirdblockIPv6'])&&!empty($_POST['fourthblockIPv6']) &&!empty($_POST['fifthblockIPv6']) && !empty($_POST['sixthblockIPv6']) && !empty($_POST['seventhblockIPv6']) && !empty($_POST['eighthblockIPv6']) && is_numeric($_POST['firstblockIPv6']) && is_numeric($_POST['secondblockIPv6']) && is_numeric($_POST['thirdblockIPv6']) && is_numeric($_POST['fourthblockIPv6']) && is_numeric($_POST['fifthblockIPv6']) && is_numeric($_POST['sixthblockIPv6'])  && is_numeric($_POST['seventhblockIPv6']) && is_numeric($_POST['eighthblockIPv6']))
+    $firstIPv6 = $_POST['firstblockIPv6'];
+    $secondIPv6 = $_POST['secondblockIPv6'];
+    $thirdIPv6 = $_POST['thirdblockIPv6'];
+    $forthIPv6 = $_POST['fourthblockIPv6'];
+    $fifthIPv6 = $_POST['fifthblockIPv6'];
+    $sixthIPv6 = $_POST['sixthblockIPv6'];
+    $seventhIPv6 = $_POST['seventhblockIPv6'];
+    $eighthIPv6 = $_POST['eighthblockIPv6'];
+
+    if(!empty($firstIPv6)&&!empty($secondIPv6) && !empty($thirdIPv6)&&!empty($forthIPv6) &&!empty($fifthIPv6) && !empty($sixthIPv6 ) && !empty($seventhIPv6) && !empty($eighthIPv6) && is_numeric($firstIPv6) && is_numeric($secondIPv6) && is_numeric($thirdIPv6) && is_numeric($forthIPv6) && is_numeric($fifthIPv6) && is_numeric($sixthIPv6 )  && is_numeric($seventhIPv6) && is_numeric($eighthIPv6)&& ($firstIPv6<=255) && ($firstIPv6>=0)&& ($secondIPv6<=255) && ($secondIPv6>=0)&& ($thirdIPv6<=255) && ($thirdIPv6>=0)&& ($forthIPv6<=255) && ($forthIPv6>=0) && ($fifthIPv6<=255) && ($fifthIPv6>=0)&& ($sixthIPv6<=255) && ($sixthIPv6>=0)&& ($seventhIPv6<=255) && ($seventhIPv6>=0)&& ($eighthIPv6<=255) && ($eighthIPv6>=0))
     {
         $l = new Yaurau_IP_Blocker();
-        $l->set = $_POST['firstblockIPv6'] .':'. $_POST['secondblockIPv6'] . ':' .$_POST['thirdblockIPv6'] . ':' . $_POST['fourthblockIPv6']. ':' . $_POST['fifthblockIPv6']. ':' . $_POST['sixthblockIPv6'] . ':' . $_POST['seventhblockIPv6']. ':' . $_POST['eighthblockIPv6'];
+        $l->set = $firstIPv6 .':'. $secondIPv6 .':'. $thirdIPv6 .':'. $forthIPv6 .':'. $fifthIPv6 .':'. $sixthIPv6 .':'. $seventhIPv6 .':'.$eighthIPv6;
         $l->enterIP();
         echo "IP $l->set blocked";
     }
-    if(
-            $_POST['submitv6'] &&
-            (
-                    empty($_POST['firstblockIPv6']) || empty($_POST['secondblockIPv6']) || empty($_POST['thirdblockIPv6']) || empty($_POST['fourthblockIPv6']) || empty($_POST['fifthblockIPv6']) || empty($_POST['sixthblockIPv6']) || empty($_POST['seventhblockIPv6']) || empty($_POST['eighthblockIPv6'])
-
-            || !is_numeric($_POST['firstblockIPv6']) || !is_numeric($_POST['secondblockIPv6']) || !is_numeric($_POST['thirdblockIPv6']) || !is_numeric($_POST['fourthblockIPv6']) || !is_numeric($_POST['fifthblockIPv6']) || !is_numeric($_POST['sixthblockIPv6']) || !is_numeric($_POST['seventhblockIPv6']) || !is_numeric($_POST['eighthblockIPv6'])
-            )
-    ) {
-        $IP = $_POST['firstblockIPv6'] .':'. $_POST['secondblockIPv6'] . ':' .$_POST['thirdblockIPv6'] . ':' . $_POST['fourthblockIPv6']. ':' . $_POST['fifthblockIPv6']. ':' . $_POST['sixthblockIPv6'] . ':' . $_POST['seventhblockIPv6']. ':' . $_POST['eighthblockIPv6'];
+    elseif($_POST['submitv6']) {
+        $IP =  $firstIPv6 .':'. $secondIPv6 .':'. $thirdIPv6 .':'. $forthIPv6 .':'. $fifthIPv6 .':'. $sixthIPv6 .':'. $seventhIPv6 .':'.$eighthIPv6;
         echo "Incorrect IP $IP";
     }
     ?>
