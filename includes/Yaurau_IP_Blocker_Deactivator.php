@@ -6,7 +6,6 @@ class Yaurau_IP_Blocker_Deactivator extends DB {
      * Purpose: deactivate the plugin
      */
 	public static function deactivate() {
-        DB::dropDBIpBlocked();
         DB::dropDBIpBlocker();
 	}
 }
