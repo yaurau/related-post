@@ -7,7 +7,9 @@ class Yaurau_IP_Blocker_Activator extends DB {
     */
     static function activate() {
         DB::createDBIpBlocker();
-        DB::createDBIpBlocked();
-        Yaurau_IP_Blocker::addDeny();
-	}
+        if(DB::loadIPDB() == NULL){
+            DB::createDBIpBlocked();
+            Yaurau_IP_Blocker::addDeny();
+        }
+    }
 }
