@@ -64,13 +64,23 @@ class Yaurau_IP_Blocker
     }
     static public function deleteDeny()
     {
-        DB::loadIPDB();
+
         $file = __DIR__ . '/../../../../.htaccess';
         $data = file_get_contents($file);
-        $deny = 'Deny from ';
+        $arrayIP = iterator_to_array(self::getIP());
+        $deny = implode(', ',$arrayIP);
         $order = "Order Deny,Allow";
-        $replace = [$deny, $order];
-        $replace = str_replace($replace, '', $data);
+        $search = [$deny, $order];
+        $replace = str_replace($search, '', $data);
         file_put_contents($file, $replace);
+    }
+    static public function getIP()
+    {
+        $l = DB::loadIPDB();
+        foreach ($l as $k) {
+            foreach ($k as $d) {
+                yield 'Deny from ' . $d;
+            }
+        }
     }
 }
