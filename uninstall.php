@@ -7,5 +7,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 $option_name = 'option';
 delete_option($option_name);
 DB::dropDBIpBlocked();
+Yaurau_IP_Blocker::deleteDeny();
 
 
