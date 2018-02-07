@@ -62,9 +62,12 @@ class Yaurau_IP_Blocker
         $data = "Order Deny,Allow" . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
     }
+    /*
+    * Function name: deleteDeny()
+    * Purpose: delete Order Deny,Allow
+    */
     static public function deleteDeny()
     {
-
         $file = __DIR__ . '/../../../../.htaccess';
         $data = file_get_contents($file);
         $arrayIP = iterator_to_array(self::getIP());
@@ -74,6 +77,10 @@ class Yaurau_IP_Blocker
         $replace = str_replace($search, '', $data);
         file_put_contents($file, $replace);
     }
+    /*
+    * Function name: getIP()
+    * Purpose: get Deny from IP
+    */
     static public function getIP()
     {
         $l = DB::loadIPDB();
