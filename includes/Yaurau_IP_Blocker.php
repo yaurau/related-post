@@ -3,14 +3,6 @@
 class Yaurau_IP_Blocker
 {
     public $set;
-    //public $setIP;
-    /*
-
-    static public function setIP(){
-        $setIP = new DB;
-        $setIP->setIPDB();
-    }
-    */
     /*
     * Function name: getIPDB
     * Purpose: get IP
@@ -35,11 +27,6 @@ class Yaurau_IP_Blocker
         $add->addIP = $this->set;
         $add->addIPDB();
     }
- /*
-    static public function addIPDB () {
-        self::setIP();
-    }
-    */
     /*
     * Function name: handleIP
     * Purpose: handle IP
@@ -64,17 +51,27 @@ class Yaurau_IP_Blocker
     }
     /*
     * Function name: deleteDeny()
-    * Purpose: delete Order Deny,Allow
+    * Purpose: delete Deny from IP
     */
     static public function deleteDeny()
     {
         $file = __DIR__ . '/../../../../.htaccess';
         $data = file_get_contents($file);
         $arrayIP = iterator_to_array(self::getIP());
-        $deny = implode(', ',$arrayIP);
+        $replace = str_replace($arrayIP, '', $data);
+        file_put_contents($file, $replace);
+    }
+    /*
+    * Function name: deleteDeny()
+    * Purpose: delete Order Deny,Allow
+    */
+    static public function deleteOrder()
+    {
+        $file = __DIR__ . '/../../../../.htaccess';
+        $data = file_get_contents($file);
         $order = "Order Deny,Allow";
-        $search = [$deny, $order];
-        $replace = str_replace($search, '', $data);
+        $count = 1;
+        $replace = str_replace($order, '', $data, $count);
         file_put_contents($file, $replace);
     }
     /*
@@ -86,8 +83,20 @@ class Yaurau_IP_Blocker
         $l = DB::loadIPDB();
         foreach ($l as $k) {
             foreach ($k as $d) {
-                yield 'Deny from ' . $d;
+                yield ''.'Deny from ' . $d .'';
             }
         }
     }
+    /*
+    * Function name: seachOrder()
+    * Purpose: seach string "Order Deny,Allow"
+    */
+    static public function seachOrder()
+    {
+        $file = __DIR__ . '/../../../../.htaccess';
+        $data = file_get_contents($file);
+        preg_match('/Order Deny,Allow/', $data, $matches);
+        return $matches;
+    }
+
 }

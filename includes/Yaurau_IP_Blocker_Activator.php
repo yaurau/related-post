@@ -9,6 +9,8 @@ class Yaurau_IP_Blocker_Activator extends DB {
         DB::createDBIpBlocker();
         if(DB::loadIPDB() == NULL){
             DB::createDBIpBlocked();
+        }
+        if(Yaurau_IP_Blocker::seachOrder() == NULL){
             Yaurau_IP_Blocker::addDeny();
         }
     }

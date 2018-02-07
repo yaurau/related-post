@@ -51,25 +51,6 @@ class DB
         $wpdb->query($sql);
     }
     /*
-    * Function name: deletIPDB
-    * Purpose: Delete database entry
-    */
-    /*public function deletIPDB()
-    {
-        global $wpdb;
-        $sql = "DELETE FROM `wp_yaurau_ip_blocked` WHERE `IP` = '$this->addIP';";
-        return $wpdb->query($sql);
-    }
-
-    static public function deletIP()
-    {
-        global $wpdb;
-        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
-        $sql = "DELETE FROM `wp_yaurau_ip_blocker` WHERE `IP` = $IP;";
-        $wpdb->query($sql);
-    }
-    */
-    /*
     * Function name: setIPDB
     * Purpose: set the IP into the table wp_yaurau_ip_blocker
     */

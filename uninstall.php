@@ -8,5 +8,6 @@ $option_name = 'option';
 delete_option($option_name);
 DB::dropDBIpBlocked();
 Yaurau_IP_Blocker::deleteDeny();
+Yaurau_IP_Blocker::deleteOrder();
 
 

@@ -3,7 +3,7 @@ function msp_field() {
     $val = get_option('option');
     $val = $val ? $val['input'] : null;
     ?> <input type="text" name="option[input]" value="<?php
-    if(esc_attr( $val )<200){
+    if(esc_attr( $val )<=300){
         echo "";
     }
     else {
