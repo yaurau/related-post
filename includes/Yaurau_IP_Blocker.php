@@ -57,7 +57,7 @@ class Yaurau_IP_Blocker
     {
         $file = __DIR__ . '/../../../../.htaccess';
         $data = file_get_contents($file);
-        $arrayIP = iterator_to_array(self::getIP());
+        $arrayIP = iterator_to_array(static::getIP());
         $replace = str_replace($arrayIP, '', $data);
         file_put_contents($file, $replace);
     }

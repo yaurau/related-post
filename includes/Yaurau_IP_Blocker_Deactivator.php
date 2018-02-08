@@ -7,5 +7,5 @@ class Yaurau_IP_Blocker_Deactivator extends DB {
      */
 	public static function deactivate() {
         DB::dropDBIpBlocker();
-	}
+    }
 }

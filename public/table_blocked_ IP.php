@@ -2,23 +2,23 @@
     <div class="table-responsive">
         <table id="editable_table" class="table table-bordered table-striped">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>IP</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>IP</th>
+                </tr>
             </thead>
             <tbody>
-            <?php
-            $gen = Yaurau_IP_Blocker::getIPDB();
-            foreach ($gen as $key=>$val) {
-            echo '
-      <tr>
-       <td>'. ($key+1) .  '</td>  
-       <td>'. $val .'</td>       
-      </tr>
-      ';
-             }
-            ?>
+                <?php
+                $gen = Yaurau_IP_Blocker::getIPDB();
+                foreach ($gen as $key=>$val) {
+                    echo '
+                    <tr>
+                        <td>'. ($key+1) .  '</td>  
+                        <td>'. $val .'</td>       
+                     </tr>
+                    ';
+                }
+                ?>
             </tbody>
         </table>
     </div>
