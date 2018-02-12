@@ -57,7 +57,8 @@ class DB
     static public function setIPDB(){
         global $wpdb;
         $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
-        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`) VALUES  ('$IP', '1')";
+        $time = $_SERVER['REQUEST_TIME'];
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`,`time`) VALUES  ('$IP', '1', '$time')";
         $wpdb->query($sql);
     }
     /*
