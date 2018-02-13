@@ -14,6 +14,8 @@ class Yaurau_IP_Blocker_Parser
                $l = new Yaurau_IP_Blocker();
                $l->set = $_SERVER ['REMOTE_ADDR'];
                $l->enterIP();
+               DB::setIPDBRepository();
+               DB::deleteIPDB();
         }
           else {
             if($time > 86400){

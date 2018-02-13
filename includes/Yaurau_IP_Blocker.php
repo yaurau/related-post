@@ -33,8 +33,8 @@ class Yaurau_IP_Blocker
     */
     static public function handleIP (){
         if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-            $setIP = new DB;
-            if ($setIP->handleIPDB() == NULL) {
+
+            if (DB::handleIPDB() == NULL && DB::handleIPRepository() == NULL) {
                 DB::setIPDB();
             } else {
                 Yaurau_IP_Blocker_Parser::parseQuery();
@@ -98,10 +98,5 @@ class Yaurau_IP_Blocker
         $data = file_get_contents($file);
         preg_match('/Order Deny,Allow/', $data, $matches);
         return $matches;
-    }
-    static public function getIPexseptions(){
-        $file = __DIR__ . '/IP_ exceptions.txt';
-        $data = file_get_contents($file);
-
     }
 }

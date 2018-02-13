@@ -20,6 +20,61 @@ class DB
         $wpdb->query($sql);
     }
     /*
+    * Function name: createDBIpRepository
+    * Purpose: create the database table wp_yaurau_ip_repository
+    */
+    static public function createDBIpRepository()
+    {
+        global $wpdb;
+        $sql =
+            "CREATE TABLE wp_yaurau_ip_repository (
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            `IP` text(50),			
+			`time` int(255),
+            PRIMARY KEY(`id`));";
+        $wpdb->query($sql);
+    }
+    /*
+    * Function name: setIPDBRepository
+    * Purpose: set the IP into the table wp_yaurau_ip_repository
+    */
+    static public function setIPDBRepository(){
+        global $wpdb;
+        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
+        $time = $_SERVER['REQUEST_TIME'];
+        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `time`) VALUES  ('$IP', '$time')";
+        $wpdb->query($sql);
+    }
+    /*
+    * Function name: loadIPRepository
+    * Purpose: load IP of wp_yaurau_ip_repository
+    */
+    static public function loadIPRepository(){
+        global $wpdb;
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
+    /*
+    * Function name: dropDBIPRepository
+    * Purpose: drop the database tables wp_yaurau_ip_repository
+    */
+    static public function dropDBIPRepository() {
+        global $wpdb;
+        $sql = "DROP TABLE wp_yaurau_ip_repository;";
+        $wpdb->query($sql);
+    }
+    /*
+    * Function name: handleIPDB
+    * Purpose: check the corresponding field
+    */
+    static public function handleIPRepository()
+    {
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository` WHERE `IP`= '$IP'";
+        return $wpdb->query($sql);
+    }
+    /*
     * Function name: createDBIpBlocked
     * Purpose: create the database table wp_yaurau_ip_blocked
     */
@@ -111,6 +166,16 @@ class DB
         $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
+    }
+    /*
+    * Function name: deleteIPDB
+    * Purpose: delete IP in the table wp_yaurau_ip_blocker
+    */
+    static public function deleteIPDB(){
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $sql = "DELETE FROM wp_yaurau_ip_blocker WHERE IP = '$IP'";
+        $wpdb->query($sql);
     }
     /*
     * Function name: getViews
