@@ -17,7 +17,7 @@ class Yaurau_IP_Blocker_Parser
                DB::setIPDBRepository();
                DB::deleteIPDB();
         }
-          else {
+        else {
             if($time > 86400){
                 DB::updateData();
             }

@@ -16,6 +16,18 @@ class Yaurau_IP_Blocker
         }
     }
     /*
+    * Function name: getIPRepository
+    * Purpose: get IP fo repository
+    */
+    static public function getIPRepository(){
+        $valueIP=DB::loadIPRepository();
+        foreach ($valueIP as $key=>$value){
+            foreach ($value as $v2) {
+                yield $v2;
+            }
+        }
+    }
+    /*
     * Function name: enterIP
     * Purpose: get IP
     */
@@ -33,10 +45,21 @@ class Yaurau_IP_Blocker
     */
     static public function handleIP (){
         if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-
+            $time = DB::getTimeRepository()[0]->time;
+            $timeBlocked = time() - $time;
             if (DB::handleIPDB() == NULL && DB::handleIPRepository() == NULL) {
                 DB::setIPDB();
-            } else {
+            }
+            elseif($timeBlocked > 86400){
+                DB::deleteIPDBRepository();
+                $file = __DIR__ . '/../../../../.htaccess';
+                $data = file_get_contents($file);
+                $l = 'Deny from ' . $_SERVER['REMOTE_ADDR'];
+                $replace = str_replace($l,'', $data);
+                file_put_contents($file, $replace);
+                DB::setIPDB();
+            }
+            else {
                 Yaurau_IP_Blocker_Parser::parseQuery();
             }
         }

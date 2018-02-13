@@ -74,6 +74,22 @@ class DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository` WHERE `IP`= '$IP'";
         return $wpdb->query($sql);
     }
+    static public function getTimeRepository(){
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $sql = "SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= '$IP'";
+        return $wpdb->get_results($sql, OBJECT);
+    }
+    /*
+     * Function name: deleteIPDB
+    * Purpose: delete IP in the table wp_yaurau_ip_blocker
+    */
+    static public function deleteIPDBRepository(){
+        global $wpdb;
+        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP = '$IP'";
+        $wpdb->query($sql);
+    }
     /*
     * Function name: createDBIpBlocked
     * Purpose: create the database table wp_yaurau_ip_blocked
