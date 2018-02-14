@@ -7,8 +7,6 @@ echo "<script src=\"$path\"></script>";
 ?>
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
-    <p><h3>Blocked IP</h3></p>
-    <?php include_once __DIR__ . '/table_blocked_ IP.php';?>
     <p><h3>Add IPv4</h3>
     <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post">
         <label>Enter the IP</label>
@@ -81,7 +79,18 @@ echo "<script src=\"$path\"></script>";
         ?>
     </form>
 </div>
-
+<?php if(!empty(DB::loadIPDB()))
+{ ?>
+    <p><h3>Blocked IP</h3></p>
+    <?php include_once __DIR__ . '/table_blocked_ IP.php';
+}
+?>
+<?php if(!empty(DB::loadIPRepository()))
+{ ?>
+    <p><h3>Temporarily blocked IP</h3></p>
+    <?php include_once __DIR__ . '/table_repository.php';
+}
+?>
 
 
 
