@@ -70,8 +70,7 @@ class DB
     static public function handleIPRepository()
     {
         global $wpdb;
-        $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository` WHERE `IP`= '$IP'";
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
         return $wpdb->query($sql);
     }
     static public function getTimeRepository(){

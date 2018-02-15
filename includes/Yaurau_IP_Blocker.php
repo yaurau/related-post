@@ -47,20 +47,15 @@ class Yaurau_IP_Blocker
         //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
             $time = DB::getTimeRepository()[0]->time;
             $timeBlocked = time() - $time;
-            if (DB::handleIPDB() == NULL && DB::handleIPRepository() == NULL) {
+            if (DB::handleIPDB() == NULL) {
                 DB::setIPDB();
-            }
-            elseif(DB::handleIPRepository() != NULL && $timeBlocked > 86400){
-                DB::deleteIPDBRepository();
-                $file = __DIR__ . '/../../../../.htaccess';
-                $data = file_get_contents($file);
-                $l = 'Deny from ' . $_SERVER['REMOTE_ADDR'];
-                $replace = str_replace($l,'', $data);
-                file_put_contents($file, $replace);
-                DB::setIPDB();
+                if (DB::handleIPRepository() != NULL) {
+                }
             }
             else {
                 Yaurau_IP_Blocker_Parser::parseQuery();
+                if(DB::handleIPRepository() != NULL){
+                }
             }
         //}
     }
@@ -122,6 +117,10 @@ class Yaurau_IP_Blocker
         preg_match('/Order Deny,Allow/', $data, $matches);
         return $matches;
     }
+    /*
+    * Function name: enterIPRepository
+    * Purpose: deny IP from repository
+    */
     static public function enterIPRepository(){
         $file = __DIR__ .'/../../../../.htaccess';
         $data = "Deny from ". $_SERVER ['REMOTE_ADDR'] . PHP_EOL;
