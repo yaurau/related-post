@@ -1,6 +1,6 @@
 <div class="container-fluid"" >
     <div class="table-responsive">
-        <table id="editable_table" class="table table-bordered table-striped">
+        <table id="repository_table" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -25,7 +25,7 @@
 </div>
 <script>
     jQuery(document).ready(function(){
-        jQuery('#editable_table').Tabledit({
+        jQuery('#repository_table').Tabledit({
             url: '<?php echo preg_replace('/public/', 'includes', plugin_dir_url(__FILE__). 'repository_action.php');?>',
             rowIdentifier: 'data-id',
             editButton: false,

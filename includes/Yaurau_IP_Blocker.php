@@ -44,13 +44,13 @@ class Yaurau_IP_Blocker
     * Purpose: handle IP
     */
     static public function handleIP (){
-        if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+        //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
             $time = DB::getTimeRepository()[0]->time;
             $timeBlocked = time() - $time;
             if (DB::handleIPDB() == NULL && DB::handleIPRepository() == NULL) {
                 DB::setIPDB();
             }
-            elseif($timeBlocked > 86400){
+            elseif(DB::handleIPRepository() != NULL && $timeBlocked > 86400){
                 DB::deleteIPDBRepository();
                 $file = __DIR__ . '/../../../../.htaccess';
                 $data = file_get_contents($file);
@@ -62,7 +62,7 @@ class Yaurau_IP_Blocker
             else {
                 Yaurau_IP_Blocker_Parser::parseQuery();
             }
-        }
+        //}
     }
     /*
     * Function name: addDeny
@@ -121,5 +121,10 @@ class Yaurau_IP_Blocker
         $data = file_get_contents($file);
         preg_match('/Order Deny,Allow/', $data, $matches);
         return $matches;
+    }
+    static public function enterIPRepository(){
+        $file = __DIR__ .'/../../../../.htaccess';
+        $data = "Deny from ". $_SERVER ['REMOTE_ADDR'] . PHP_EOL;
+        file_put_contents($file, $data, FILE_APPEND);
     }
 }

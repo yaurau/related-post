@@ -40,9 +40,9 @@ class DB
     */
     static public function setIPDBRepository(){
         global $wpdb;
-        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $time = $_SERVER['REQUEST_TIME'];
-        $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `time`) VALUES  ('$IP', '$time')";
+        $sql = "INSERT INTO `wp_yaurau_ip_repository`( `IP`, `time`) VALUES  ('$IP', '$time')";
         $wpdb->query($sql);
     }
     /*
@@ -70,13 +70,13 @@ class DB
     static public function handleIPRepository()
     {
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository` WHERE `IP`= '$IP'";
         return $wpdb->query($sql);
     }
     static public function getTimeRepository(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
@@ -86,7 +86,7 @@ class DB
     */
     static public function deleteIPDBRepository(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP = '$IP'";
         $wpdb->query($sql);
     }
@@ -127,7 +127,7 @@ class DB
     */
     static public function setIPDB(){
         global $wpdb;
-        $IP = base64_encode ($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $time = $_SERVER['REQUEST_TIME'];
         $sql = "INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`,`time`) VALUES  ('$IP', '1', '$time')";
         $wpdb->query($sql);
@@ -148,7 +148,7 @@ class DB
     static public function handleIPDB()
     {
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->query($sql);
     }
@@ -158,7 +158,7 @@ class DB
     */
     static public function counterViews()
     {   global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
             $views = $wpdb->get_var($sql) + 1;
             $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '$IP'";
@@ -179,7 +179,7 @@ class DB
     */
     static public function getTime(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
@@ -189,7 +189,7 @@ class DB
     */
     static public function deleteIPDB(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "DELETE FROM wp_yaurau_ip_blocker WHERE IP = '$IP'";
         $wpdb->query($sql);
     }
@@ -199,7 +199,7 @@ class DB
     */
     static public function getViews(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = "SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
@@ -209,7 +209,7 @@ class DB
     */
     static public function updateData(){
         global $wpdb;
-        $IP = base64_encode($_SERVER ['REMOTE_ADDR']);
+        $IP = $_SERVER ['REMOTE_ADDR'];
         $time = time();
         $views = 1;
         $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views, `time`= $time WHERE `IP`= '$IP'";

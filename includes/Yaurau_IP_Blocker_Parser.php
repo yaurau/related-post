@@ -10,12 +10,10 @@ class Yaurau_IP_Blocker_Parser
         $countViews = DB::getViews()[0]->number_views;
         $timeCreate = DB::getTime()[0]->time;
         $time = time() - $timeCreate;
-        if(($countViews >= $max['input']) && ($max['input']>300)){
-               $l = new Yaurau_IP_Blocker();
-               $l->set = $_SERVER ['REMOTE_ADDR'];
-               $l->enterIP();
-               DB::setIPDBRepository();
-               DB::deleteIPDB();
+        if(($countViews >= $max['input']) && ($max['input']>3)){
+            DB::setIPDBRepository();
+            DB::deleteIPDB();
+            Yaurau_IP_Blocker::enterIPRepository();
         }
         else {
             if($time > 86400){
