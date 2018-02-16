@@ -3,6 +3,7 @@ require_once __DIR__ . '/../autoload.php';
 class DB
 {
     public $addIP;
+    public $IP;
     /*
     * Function name: createDBIpBlocker
     * Purpose: create the database table wp_yaurau_ip_blocker
@@ -73,20 +74,19 @@ class DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
         return $wpdb->query($sql);
     }
-    static public function getTimeRepository(){
+    static public function getIPRepository(){
         global $wpdb;
-        $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = "SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= '$IP'";
+        $time = time() - 86400;
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository` WHERE   `time`<= '$time'";
         return $wpdb->get_results($sql, OBJECT);
     }
     /*
      * Function name: deleteIPDB
     * Purpose: delete IP in the table wp_yaurau_ip_blocker
     */
-    static public function deleteIPDBRepository(){
+    public function deleteIPDBRepository(){
         global $wpdb;
-        $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP = '$IP'";
+        $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP = '$this->IP'";
         $wpdb->query($sql);
     }
     /*

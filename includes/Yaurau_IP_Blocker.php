@@ -44,20 +44,20 @@ class Yaurau_IP_Blocker
     * Purpose: handle IP
     */
     static public function handleIP (){
-        //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-            $time = DB::getTimeRepository()[0]->time;
-            $timeBlocked = time() - $time;
+        if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
             if (DB::handleIPDB() == NULL) {
                 DB::setIPDB();
                 if (DB::handleIPRepository() != NULL) {
+                    Yaurau_IP_Repository::deleteIPbyRepository();
                 }
             }
             else {
                 Yaurau_IP_Blocker_Parser::parseQuery();
                 if(DB::handleIPRepository() != NULL){
+                    Yaurau_IP_Repository::deleteIPbyRepository();
                 }
             }
-        //}
+        }
     }
     /*
     * Function name: addDeny

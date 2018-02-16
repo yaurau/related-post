@@ -15,10 +15,10 @@ class Yaurau_Random_Quote_Admin
     {
         register_setting( 'new_option', 'option' );
             add_settings_section(
-                'eg_setting_section', // секция
+                'eg_setting_section',
                 'The maximum number of hits per day',
                 '',
-                MY_PLAGIN_PAGE // страница
+                MY_PLAGIN_PAGE
             );
             add_settings_field(
                 'IP',

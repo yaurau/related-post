@@ -5,9 +5,6 @@ echo "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap
 $path = plugin_dir_url(__FILE__) . 'js/jquery.tabledit.min.js';
 echo "<script src=\"$path\"></script>";
 ?>
-<?php
-var_dump(DB::handleIPRepository());
-?>
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
     <p><h3>Add IPv4</h3>
@@ -90,7 +87,7 @@ var_dump(DB::handleIPRepository());
 ?>
 <?php if(!empty(DB::loadIPRepository()))
 { ?>
-    <p><h3>Temporarily blocked IP</h3></p>
+    <p><h3>On the day of the blocked IP address</h3></p>
     <?php include_once __DIR__ . '/table_repository.php';
 }
 ?>
