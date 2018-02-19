@@ -44,7 +44,7 @@ class Yaurau_IP_Blocker
     * Purpose: handle IP
     */
     static public function handleIP (){
-        if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+        //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
             if (DB::handleIPDB() == NULL) {
                 DB::setIPDB();
                 if (DB::handleIPRepository() != NULL) {
@@ -57,7 +57,7 @@ class Yaurau_IP_Blocker
                     Yaurau_IP_Repository::deleteIPbyRepository();
                 }
             }
-        }
+        //}
     }
     /*
     * Function name: addDeny

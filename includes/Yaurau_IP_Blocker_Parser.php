@@ -20,7 +20,7 @@ class Yaurau_IP_Blocker_Parser
                 DB::updateData();
             }
             else{
-                DB::counterViews();
+                //DB::counterViews();
             }
         }
     }
