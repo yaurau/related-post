@@ -16,13 +16,13 @@ class Yaurau_Random_Quote_Admin
         register_setting( 'new_option', 'option' );
             add_settings_section(
                 'eg_setting_section',
-                'The maximum number of hits per day',
+                'The maximum number of attempts to log in per day',
                 '',
                 MY_PLAGIN_PAGE
             );
             add_settings_field(
                 'IP',
-                'Enter the maximum number of hits (at least 300)',
+                'Enter the maximum number of attempts (at least 5)',
                 'msp_field',
                 MY_PLAGIN_PAGE,
                 'eg_setting_section'

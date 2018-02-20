@@ -14,17 +14,12 @@ register_activation_hook( __FILE__, ['Yaurau_IP_Blocker_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_IP_Blocker_Deactivator','deactivate']);
 Yaurau_Random_Quote_Admin::getCreateMenu();
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_Random_Quote_Admin', 'getSettingsLink'] );
-add_action( 'login_header', ['Yaurau_IP_Blocker','handleIP']);
-add_action( 'plugins_loaded', 'custom_login' );
-function custom_login() {
-    if( !empty($_POST) ){
-        $signon = wp_signon();
-        if (is_wp_error($signon)) {
-            DB::counterViews();
-        }
-    }
+add_action( 'plugins_loaded', ['Yaurau_IP_Blocker','handleIP']);
+add_action( 'init', ['Yaurau_IP_Blocker','cleanIPRepository']);
 
-}
+
+
+
 
 
 

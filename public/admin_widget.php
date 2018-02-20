@@ -5,15 +5,7 @@ echo "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap
 $path = plugin_dir_url(__FILE__) . 'js/jquery.tabledit.min.js';
 echo "<script src=\"$path\"></script>";
 ?>
-<?php
-var_dump($_POST['log']);
 
-
-
-
-
-
-?>
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
     <p><h3>Add IPv4</h3>

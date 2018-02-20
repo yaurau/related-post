@@ -10,7 +10,7 @@ class Yaurau_IP_Blocker_Parser
         $countViews = DB::getViews()[0]->number_views;
         $timeCreate = DB::getTime()[0]->time;
         $time = time() - $timeCreate;
-        if(($countViews >= $max['input']) && ($max['input']>300)){
+        if(($countViews >= $max['input']) && ($max['input']>4)){
             DB::setIPDBRepository();
             DB::deleteIPDB();
             Yaurau_IP_Blocker::enterIPRepository();
@@ -20,7 +20,7 @@ class Yaurau_IP_Blocker_Parser
                 DB::updateData();
             }
             else{
-                //DB::counterViews();
+                DB::counterViews();
             }
         }
     }

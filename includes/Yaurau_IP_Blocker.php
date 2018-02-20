@@ -44,20 +44,18 @@ class Yaurau_IP_Blocker
     * Purpose: handle IP
     */
     static public function handleIP (){
-        //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-            if (DB::handleIPDB() == NULL) {
-                DB::setIPDB();
-                if (DB::handleIPRepository() != NULL) {
-                    Yaurau_IP_Repository::deleteIPbyRepository();
-                }
+        if( !empty($_POST) ){
+            $signon = wp_signon();
+            if (is_wp_error($signon)) {
+                //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+                    if (DB::handleIPDB() == NULL) {
+                        DB::setIPDB();
+                    }
+                    else {
+                        Yaurau_IP_Blocker_Parser::parseQuery();                      }
+                //}
             }
-            else {
-                Yaurau_IP_Blocker_Parser::parseQuery();
-                if(DB::handleIPRepository() != NULL){
-                    Yaurau_IP_Repository::deleteIPbyRepository();
-                }
-            }
-        //}
+        }
     }
     /*
     * Function name: addDeny
@@ -125,5 +123,14 @@ class Yaurau_IP_Blocker
         $file = __DIR__ .'/../../../../.htaccess';
         $data = "Deny from ". $_SERVER ['REMOTE_ADDR'] . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
+    }
+    /*
+    * Function name: cleanIPRepository()
+    * Purpose: clears the IP repository
+    */
+    static function cleanIPRepository(){
+        if (DB::handleIPRepository() != NULL) {
+            Yaurau_IP_Repository::deleteIPbyRepository();
+        }
     }
 }
