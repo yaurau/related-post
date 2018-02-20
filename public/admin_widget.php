@@ -6,13 +6,9 @@ $path = plugin_dir_url(__FILE__) . 'js/jquery.tabledit.min.js';
 echo "<script src=\"$path\"></script>";
 ?>
 <?php
-//var_dump(wp_login_form( ));
-if(wp_login_form( ) == true ){
-    echo 'Ok';
-}
-else{
-    echo 'False';
-}
+var_dump($_POST['log']);
+
+
 
 
 
