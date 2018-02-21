@@ -130,17 +130,6 @@ class Yaurau_IP_Blocker
         return $matches;
     }
     /*
-    * Function name: cleanIPRepository()
-    * Purpose: clears the IP repository
-    */
-    static function cleanIPRepository()
-    {
-        if (DB::handleIPRepository() != NULL) {
-            Yaurau_IP_Repository::deleteIPbyRepository();
-        }
-    }
-
-    /*
     * Function name: redirectingBlockedIP
     * Purpose: redirecting blocked IP
     */
