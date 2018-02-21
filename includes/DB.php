@@ -56,6 +56,16 @@ class DB
         return $wpdb->get_results($sql, ARRAY_A);
     }
     /*
+    * Function name: loadIPRepository
+    * Purpose: load IP of wp_yaurau_ip_repository
+    */
+    static public function seachIPRepository(){
+        global $wpdb;
+        $IP = $_SERVER ['REMOTE_ADDR'];
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`WHERE IP = '$IP'";
+        return $wpdb->query($sql);
+    }
+    /*
     * Function name: dropDBIPRepository
     * Purpose: drop the database tables wp_yaurau_ip_repository
     */
@@ -86,6 +96,13 @@ class DB
     */
     public function deleteIPDBRepository(){
         global $wpdb;
+        'SET GLOBAL event_scheduler=ON';
+        'DROP EVENT IF EXISTS `2`';
+
+        'CREATE EVENT myeventr ON SCHEDULE EVERY 
+ 1 SECOND DO INSERT INTO wordpress.wp_yaurau_ip_blocker (`IP`) VALUES (23)';
+
+
         $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP = '$this->IP'";
         $wpdb->query($sql);
     }
