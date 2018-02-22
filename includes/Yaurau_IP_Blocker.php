@@ -17,7 +17,6 @@ class Yaurau_IP_Blocker
             }
         }
     }
-
     /*
     * Function name: getIPRepository
     * Purpose: get IP fo repository
@@ -31,7 +30,6 @@ class Yaurau_IP_Blocker
             }
         }
     }
-
     /*
     * Function name: enterIP
     * Purpose: get IP
@@ -45,7 +43,6 @@ class Yaurau_IP_Blocker
         $add->addIP = $this->set;
         $add->addIPDB();
     }
-
     /*
     * Function name: handleIP
     * Purpose: handle IP
@@ -65,7 +62,6 @@ class Yaurau_IP_Blocker
             }
         }
     }
-
     /*
     * Function name: addDeny
     * Purpose: add deny
@@ -76,7 +72,6 @@ class Yaurau_IP_Blocker
         $data = "Order Deny,Allow" . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
     }
-
     /*
     * Function name: deleteDeny()
     * Purpose: delete Deny from IP
@@ -89,7 +84,6 @@ class Yaurau_IP_Blocker
         $replace = str_replace($arrayIP, '', $data);
         file_put_contents($file, $replace);
     }
-
     /*
     * Function name: deleteDeny()
     * Purpose: delete Order Deny,Allow
@@ -103,7 +97,6 @@ class Yaurau_IP_Blocker
         $replace = str_replace($order, '', $data, $count);
         file_put_contents($file, $replace);
     }
-
     /*
     * Function name: getIP()
     * Purpose: get Deny from IP
@@ -117,7 +110,6 @@ class Yaurau_IP_Blocker
             }
         }
     }
-
     /*
     * Function name: seachOrder()
     * Purpose: seach string "Order Deny,Allow"

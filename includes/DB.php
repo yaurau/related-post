@@ -105,7 +105,6 @@ class DB
         $sql = "CREATE EVENT deleteIPDBRepository ON SCHEDULE EVERY 1 DAY DO DELETE FROM wp_yaurau_ip_repository";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: createDBIpBlocked
     * Purpose: create the database table wp_yaurau_ip_blocked
@@ -120,7 +119,6 @@ class DB
             PRIMARY KEY(`id`));";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: dropDBIpBlocker
     * Purpose: drop the database tables wp_yaurau_ip_blocker
@@ -131,7 +129,6 @@ class DB
         $sql = "DROP TABLE wp_yaurau_ip_blocker;";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: dropDBIpBlocked
     * Purpose: drop the database tables wp_yaurau_ip_blocked
@@ -192,7 +189,6 @@ class DB
         $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '$IP'";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: loadIPDB
     * Purpose: load IP
@@ -203,7 +199,6 @@ class DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
-
     /*
     * Function name: getTime
     * Purpose: get time
@@ -215,7 +210,6 @@ class DB
         $sql = "SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= '$IP'";
         return $wpdb->get_results($sql, OBJECT);
     }
-
     /*
     * Function name: deleteIPDB
     * Purpose: delete IP in the table wp_yaurau_ip_blocker
@@ -227,7 +221,6 @@ class DB
         $sql = "DELETE FROM wp_yaurau_ip_blocker WHERE IP = '$IP'";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: getViews
     * Purpose: get views
@@ -252,7 +245,6 @@ class DB
         $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views, `time`= $time WHERE `IP`= '$IP'";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: setGlobalEvent
     * Purpose: set global event
