@@ -52,13 +52,14 @@ class Yaurau_IP_Blocker
         if (!empty($_POST)) {
             $signon = wp_signon();
             if (is_wp_error($signon)) {
-                //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-                if (DB::handleIPDB() == NULL) {
-                    DB::setIPDB();
-                } else {
-                    Yaurau_IP_Blocker_Parser::parseQuery();
+                if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+                    if (DB::handleIPDB() == NULL) {
+                        DB::setIPDB();
+                    }
+                    else {
+                        Yaurau_IP_Blocker_Parser::parseQuery();
+                    }
                 }
-                //}
             }
         }
     }
