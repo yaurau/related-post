@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Yaurau IP Blocker
  * Plugin URI:        https://github.com/yaurau/yaurau-ip-blocker
- * Description:       A plugin for output random quote.
+ * Description:       The plugin blocks IP-addresses on the entered IP-address, and temporarily blocks IP-addresses when exceeding the limit of login and password and displays them in the table.
  * Version:           1.0.0
  * Author:            Rauvtovich Yauhen
  * Author URI:        https://github.com/yaurau
