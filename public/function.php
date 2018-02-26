@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 function msp_field() {
     $val = get_option('option');

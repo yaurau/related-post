@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 require_once __DIR__ . '/../autoload.php';
 
 class Yaurau_Random_Quote_Widget extends WP_Widget

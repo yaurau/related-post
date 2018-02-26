@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker_Parser
 {
     /*
@@ -13,7 +14,6 @@ class Yaurau_IP_Blocker_Parser
         if(($countViews >= $max['input']) && ($max['input']>4)){
             DB::setIPDBRepository();
             DB::deleteIPDB();
-            Yaurau_IP_Repository::deleteIPbyRepository();
         }
         else {
             if($time > 86400){

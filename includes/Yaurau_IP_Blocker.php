@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker
 {
     public $set;
@@ -52,14 +52,14 @@ class Yaurau_IP_Blocker
         if (!empty($_POST)) {
             $signon = wp_signon();
             if (is_wp_error($signon)) {
-                if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+                //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
                     if (DB::handleIPDB() == NULL) {
                         DB::setIPDB();
                     }
                     else {
                         Yaurau_IP_Blocker_Parser::parseQuery();
                     }
-                }
+                //}
             }
         }
     }
@@ -129,7 +129,7 @@ class Yaurau_IP_Blocker
     static function redirectingBlockedIP()
     {
         if (DB::seachIPRepository() != NULL) {
-            $timeCreate = DB::getTime()[0]->time;
+            $timeCreate = DB::getTimeRepository()[0]->time;
             $time = time() - $timeCreate;
             if($time>86400){
                 Yaurau_IP_Repository::deleteIPbyRepository();
@@ -139,6 +139,6 @@ class Yaurau_IP_Blocker
             }
 
         }
-        
+
     }
 }

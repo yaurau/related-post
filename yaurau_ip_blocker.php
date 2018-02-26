@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Plugin Name:       Yaurau IP Blocker
  * Plugin URI:        https://github.com/yaurau/yaurau-ip-blocker

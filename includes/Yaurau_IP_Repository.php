@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Repository
 {
     /*

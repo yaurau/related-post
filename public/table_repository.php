@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <div class="container-fluid"" >
     <div class="table-responsive">
         <table id="repository_table" class="table table-bordered table-striped">
