@@ -7,7 +7,6 @@ class Yaurau_IP_Repository
     * Purpose: delete IP by repository
     */
     static public function deleteIPbyRepository(){
-        DB::setGlobalEvent();
         DB::deleteIPDBRepository();
     }
 }

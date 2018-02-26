@@ -73,6 +73,17 @@ class DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`WHERE IP = '$IP'";
         return $wpdb->query($sql);
     }
+    /*
+    * Function name: getTimeRepository
+    * Purpose: get time of wp_yaurau_ip_repository
+    */
+    static public function getTimeRepository()
+    {
+        global $wpdb;
+        $IP = $_SERVER ['REMOTE_ADDR'];
+        $sql = "SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= '$IP'";
+        return $wpdb->get_results($sql, OBJECT);
+    }
 
     /*
     * Function name: dropDBIPRepository
@@ -102,7 +113,8 @@ class DB
     static public function deleteIPDBRepository()
     {
         global $wpdb;
-        $sql = "CREATE EVENT deleteIPDBRepository ON SCHEDULE EVERY 1 DAY DO DELETE FROM wp_yaurau_ip_repository";
+        $IP = $_SERVER ['REMOTE_ADDR'];
+        $sql = "DELETE FROM wp_yaurau_ip_repository WHERE IP= '$IP'";
         $wpdb->query($sql);
     }
     /*
@@ -243,16 +255,6 @@ class DB
         $time = time();
         $views = 1;
         $sql = "UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views, `time`= $time WHERE `IP`= '$IP'";
-        $wpdb->query($sql);
-    }
-    /*
-    * Function name: setGlobalEvent
-    * Purpose: set global event
-    */
-    static public function setGlobalEvent()
-    {
-        global $wpdb;
-        $sql = "SET GLOBAL event_scheduler=ON";
         $wpdb->query($sql);
     }
 }

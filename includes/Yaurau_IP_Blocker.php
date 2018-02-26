@@ -129,7 +129,16 @@ class Yaurau_IP_Blocker
     static function redirectingBlockedIP()
     {
         if (DB::seachIPRepository() != NULL) {
-            header('Location:' . plugins_url('yaurau-ip-blocker/public/banned.html'));
+            $timeCreate = DB::getTime()[0]->time;
+            $time = time() - $timeCreate;
+            if($time>86400){
+                Yaurau_IP_Repository::deleteIPbyRepository();
+            }
+            else{
+                header('Location:' . plugins_url('yaurau-ip-blocker/public/banned.html'));
+            }
+
         }
+        
     }
 }
