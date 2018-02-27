@@ -8,8 +8,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 $option_name = 'option';
 delete_option($option_name);
 Yaurau_IP_Blocker::deleteDeny();
-DB::dropDBIpBlocked();
-DB::dropDBIPRepository();
+Yaurau_IP_Blocker_DB::dropDBIpBlocked();
+Yaurau_IP_Blocker_DB::dropDBIPRepository();
 Yaurau_IP_Blocker::deleteOrder();
 
 

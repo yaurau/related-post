@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-class Yaurau_IP_Repository
+class Yaurau_IP_Blocker_Repository
 {
     /*
     * Function name: deleteIPbyRepository
     * Purpose: delete IP by repository
     */
     static public function deleteIPbyRepository(){
-        DB::deleteIPDBRepository();
+        Yaurau_IP_Blocker_DB::deleteIPDBRepository();
     }
 }

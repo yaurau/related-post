@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 require_once __DIR__ . '/../autoload.php';
-class Yaurau_Random_Quote_Admin
+class Yaurau_IP_Blocker_Admin
 {
     /*
     * Function name: createMenu
@@ -23,13 +23,13 @@ class Yaurau_Random_Quote_Admin
             add_settings_field(
                 'IP',
                 'Enter the maximum number of attempts (at least 5)',
-                'msp_field',
+                'yib_msp_field',
                 MY_PLAGIN_PAGE,
                 'eg_setting_section'
             );
     }
     static public function  settings_page() {
-        Yaurau_Random_Quote_Widget::adminWidgetGet();
+        Yaurau_IP_Blocker_Widget::adminWidgetGet();
      }
     static public function getCreateMenu() {
         add_action( 'admin_menu', [__CLASS__, 'createMenu']);

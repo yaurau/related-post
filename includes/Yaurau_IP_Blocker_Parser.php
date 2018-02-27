@@ -8,19 +8,19 @@ class Yaurau_IP_Blocker_Parser
     */
     static public function parseQuery(){
         $max = (get_option('option'));
-        $countViews = DB::getViews()[0]->number_views;
-        $timeCreate = DB::getTime()[0]->time;
+        $countViews = Yaurau_IP_Blocker_DB::getViews()[0]->number_views;
+        $timeCreate = Yaurau_IP_Blocker_DB::getTime()[0]->time;
         $time = time() - $timeCreate;
         if(($countViews >= $max['input']) && ($max['input']>4)){
-            DB::setIPDBRepository();
-            DB::deleteIPDB();
+            Yaurau_IP_Blocker_DB::setIPDBRepository();
+            Yaurau_IP_Blocker_DB::deleteIPDB();
         }
         else {
             if($time > 86400){
-                DB::updateData();
+                Yaurau_IP_Blocker_DB::updateData();
             }
             else{
-                DB::counterViews();
+                Yaurau_IP_Blocker_DB::counterViews();
             }
         }
     }

@@ -10,7 +10,7 @@ class Yaurau_IP_Blocker
     */
     static public function getIPDB()
     {
-        $valueIP = DB::loadIPDB();
+        $valueIP = Yaurau_IP_Blocker_DB::loadIPDB();
         foreach ($valueIP as $key => $value) {
             foreach ($value as $v2) {
                 yield $v2;
@@ -23,7 +23,7 @@ class Yaurau_IP_Blocker
     */
     static public function getIPRepository()
     {
-        $valueIP = DB::loadIPRepository();
+        $valueIP = Yaurau_IP_Blocker_DB::loadIPRepository();
         foreach ($valueIP as $key => $value) {
             foreach ($value as $v2) {
                 yield $v2;
@@ -39,7 +39,7 @@ class Yaurau_IP_Blocker
         $file = __DIR__ . '/../../../../.htaccess';
         $data = "Deny from " . $this->set . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
-        $add = new DB();
+        $add = new Yaurau_IP_Blocker_DB();
         $add->addIP = $this->set;
         $add->addIPDB();
     }
@@ -53,8 +53,8 @@ class Yaurau_IP_Blocker
             $signon = wp_signon();
             if (is_wp_error($signon)) {
                 //if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
-                    if (DB::handleIPDB() == NULL) {
-                        DB::setIPDB();
+                    if (Yaurau_IP_Blocker_DB::handleIPDB() == NULL) {
+                        Yaurau_IP_Blocker_DB::setIPDB();
                     }
                     else {
                         Yaurau_IP_Blocker_Parser::parseQuery();
@@ -104,7 +104,7 @@ class Yaurau_IP_Blocker
     */
     static public function getIP()
     {
-        $l = DB::loadIPDB();
+        $l = Yaurau_IP_Blocker_DB::loadIPDB();
         foreach ($l as $k) {
             foreach ($k as $d) {
                 yield '' . 'Deny from ' . $d . '';
@@ -128,14 +128,14 @@ class Yaurau_IP_Blocker
     */
     static function redirectingBlockedIP()
     {
-        if (DB::seachIPRepository() != NULL) {
-            $timeCreate = DB::getTimeRepository()[0]->time;
+        if (Yaurau_IP_Blocker_DB::seachIPRepository() != NULL) {
+            $timeCreate = Yaurau_IP_Blocker_DB::getTimeRepository()[0]->time;
             $time = time() - $timeCreate;
             if($time>86400){
-                Yaurau_IP_Repository::deleteIPbyRepository();
+                Yaurau_IP_Blocker_Repository::deleteIPbyRepository();
             }
             else{
-                header('Location:' . plugins_url('yaurau-ip-blocker/public/banned.html'));
+                header('Location:' . esc_url( plugins_url('yaurau-ip-blocker/public/banned.html')));
             }
 
         }

@@ -1,5 +1,5 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 echo "<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">
 ";
 echo "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>";
@@ -80,13 +80,13 @@ echo "<script src=\"$path\"></script>";
         ?>
     </form>
 </div>
-<?php if(!empty(DB::loadIPDB()))
+<?php if(!empty(Yaurau_IP_Blocker_DB::loadIPDB()))
 { ?>
     <p><h3>Blocked IP</h3></p>
     <?php include_once __DIR__ . '/table_blocked_ IP.php';
 }
 ?>
-<?php if(!empty(DB::loadIPRepository()))
+<?php if(!empty(Yaurau_IP_Blocker_DB::loadIPRepository()))
 { ?>
     <p><h3>On the day of the blocked IP address</h3></p>
     <?php include_once __DIR__ . '/table_repository.php';

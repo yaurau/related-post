@@ -1,6 +1,6 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
-function msp_field() {
+
+function yib_msp_field() {
     $val = get_option('option');
     $val = $val ? $val['input'] : null;
     ?> <input type="text" name="option[input]" value="<?php

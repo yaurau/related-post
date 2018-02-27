@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 require_once __DIR__ . '/../autoload.php';
-class DB
+class Yaurau_IP_Blocker_DB
 {
     public $addIP;
     public $IP;
@@ -46,7 +46,7 @@ class DB
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
         $time = $_SERVER['REQUEST_TIME'];
-        $sql = $wpdb->prepare("INSERT INTO `wp_yaurau_ip_repository`( `IP`, `time`) VALUES  ('%s', '%s')", $IP, $time);
+        $sql = $wpdb->prepare("INSERT INTO `wp_yaurau_ip_repository`( `IP`, `time`) VALUES  (%s, %s)", $IP, $time);
         $wpdb->query($sql);
     }
 
@@ -69,7 +69,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_repository`WHERE IP = '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_repository`WHERE IP = %s", $IP);
         return $wpdb->query($sql);
     }
     /*
@@ -80,7 +80,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `time` FROM `wp_yaurau_ip_repository` WHERE   `IP`= %s", $IP);
         return $wpdb->get_results($sql, OBJECT);
     }
 
@@ -113,7 +113,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_repository WHERE IP= '%s'", $IP);
+        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_repository WHERE IP= %s", $IP);
         $wpdb->query($sql);
     }
     /*
@@ -182,7 +182,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         return $wpdb->query($sql);
     }
 
@@ -194,9 +194,9 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         $views = $wpdb->get_var($sql) + 1;
-        $sql = $wpdb->prepare("UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= %s", $IP);
         $wpdb->query($sql);
     }
     /*
@@ -217,7 +217,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= %s", $IP);
         return $wpdb->get_results($sql, OBJECT);
     }
     /*
@@ -228,7 +228,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocker WHERE `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocker WHERE `IP`= %s", $IP);
         $wpdb->query($sql);
     }
     /*
@@ -239,7 +239,7 @@ class DB
     {
         global $wpdb;
         $IP = $_SERVER ['REMOTE_ADDR'];
-        $sql = $wpdb->prepare("SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= '%s'", $IP);
+        $sql = $wpdb->prepare("SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         return $wpdb->get_results($sql, OBJECT);
     }
     /*
@@ -252,7 +252,7 @@ class DB
         $IP = $_SERVER ['REMOTE_ADDR'];
         $time = time();
         $views = 1;
-        $sql = $wpdb->prepare("UPDATE `wp_yaurau_ip_blocker` SET `number_views` = %d, `time`= %d WHERE `IP`= '%s'", $views, $time, $IP);
+        $sql = $wpdb->prepare("UPDATE `wp_yaurau_ip_blocker` SET `number_views` = %d, `time`= %d WHERE `IP`= %s", $views, $time, $IP);
         $wpdb->query($sql);
     }
 }
