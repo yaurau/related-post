@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * License:           GPL-2.0+
  */
 require_once __DIR__ . '/autoload.php';
-const MY_PLAGIN_PAGE = 'yaurau_ip_blocker';
+const Yaurau_IP_Blocker_PAGE = 'yaurau_ip_blocker';
 register_activation_hook( __FILE__, ['Yaurau_IP_Blocker_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_IP_Blocker_Deactivator','deactivate']);
 Yaurau_IP_Blocker_Admin::getCreateMenu();

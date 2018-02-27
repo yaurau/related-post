@@ -18,13 +18,13 @@ class Yaurau_IP_Blocker_Admin
                 'eg_setting_section',
                 'The maximum number of attempts to log in per day',
                 '',
-                MY_PLAGIN_PAGE
+                Yaurau_IP_Blocker_PAGE
             );
             add_settings_field(
                 'IP',
                 'Enter the maximum number of attempts (at least 5)',
                 'yib_msp_field',
-                MY_PLAGIN_PAGE,
+                Yaurau_IP_Blocker_PAGE,
                 'eg_setting_section'
             );
     }

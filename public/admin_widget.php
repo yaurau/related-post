@@ -9,7 +9,7 @@ echo "<script src=\"$path\"></script>";
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
     <p><h3>Add IPv4</h3>
-    <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post">
+    <form action=<?php echo '"options-general.php?page=' . Yaurau_IP_Blocker_PAGE .'"' ?> method="post">
         <label>Enter the IP</label>
         <input type="text" name="firstblockIP" maxlength="3" size="2">.
         <input type="text" name="secondblockIP" maxlength="3" size="2">.
@@ -37,7 +37,7 @@ echo "<script src=\"$path\"></script>";
     }
     ?>
     <p><h3>Add IPv6</h3>
-    <form action=<?php echo '"options-general.php?page=' . MY_PLAGIN_PAGE .'"' ?> method="post">
+    <form action=<?php echo '"options-general.php?page=' . Yaurau_IP_Blocker_PAGE .'"' ?> method="post">
         <label>Enter the IP</label>
         <input type="text" name="firstblockIPv6" maxlength="3" size="2">:
         <input type="text" name="secondblockIPv6" maxlength="3" size="2">:
@@ -74,7 +74,7 @@ echo "<script src=\"$path\"></script>";
     <form action="options.php" method="POST">
         <?php
         settings_fields( 'new_option' );     // скрытые защитные поля - nonce
-        do_settings_sections( MY_PLAGIN_PAGE ); // секции с настройками (опциями). У нас она всего одна 'section_id'
+        do_settings_sections( Yaurau_IP_Blocker_PAGE ); // секции с настройками (опциями). У нас она всего одна 'section_id'
         submit_button();
         echo get_option('some_other_option');
         ?>
