@@ -11,11 +11,12 @@ class Yaurau_IP_Blocker
     static public function getIPDB()
     {
         $valueIP = Yaurau_IP_Blocker_DB::loadIPDB();
-        foreach ($valueIP as $key => $value) {
+        return $valueIP;
+        /*foreach ($valueIP as $key => $value) {
             foreach ($value as $v2) {
                 yield $v2;
             }
-        }
+        }*/
     }
     /*
     * Function name: getIPRepository

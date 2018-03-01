@@ -83,7 +83,7 @@ echo "<script src=\"$path\"></script>";
 <?php if(!empty(Yaurau_IP_Blocker_DB::loadIPDB()))
 { ?>
     <p><h3>Blocked IP</h3></p>
-    <?php include_once __DIR__ . '/table_blocked_ IP.php';
+    <?php include_once __DIR__ . '/../table_blocked_ IP.php';
 }
 ?>
 <?php if(!empty(Yaurau_IP_Blocker_DB::loadIPRepository()))

@@ -206,7 +206,7 @@ class Yaurau_IP_Blocker_DB
     static public function loadIPDB()
     {
         global $wpdb;
-        $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocked`";
+        $sql = "SELECT `id`,`IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
     /*
