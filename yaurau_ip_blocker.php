@@ -27,4 +27,7 @@ echo "Hello" . $_POST["recordToDelete"];
 
     wp_die(); // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
 }
+add_action( 'admin_enqueue_scripts', function(){
+    wp_enqueue_style( 'my-wp-admin', plugin_dir_url(__FILE__). 'public/css/wp-admin.css' );
+}, 1 );
 

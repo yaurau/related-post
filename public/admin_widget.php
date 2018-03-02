@@ -1,10 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-echo "<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">
-";
-echo "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>";
-$path = plugin_dir_url(__FILE__) . 'js/jquery.tabledit.min.js';
-echo "<script src=\"$path\"></script>";
+
 ?>
 <div class="wrap">
     <h2><?php echo get_admin_page_title() ?></h2>
@@ -83,7 +79,7 @@ echo "<script src=\"$path\"></script>";
 <?php if(!empty(Yaurau_IP_Blocker_DB::loadIPDB()))
 { ?>
     <p><h3>Blocked IP</h3></p>
-    <?php include_once __DIR__ . '/../table_blocked_ IP.php';
+    <?php include_once __DIR__ . '/table_blocked_ IP.php';
 }
 ?>
 <?php if(!empty(Yaurau_IP_Blocker_DB::loadIPRepository()))
