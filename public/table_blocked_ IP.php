@@ -1,10 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;?>
 <?php
-add_action('admin_print_footer_scripts', 'my_action_javascript', 99);
-function my_action_javascript() {
+add_action('admin_print_footer_scripts', 'yib_table_blocked', 99);
+function yib_table_blocked() {
 ?>
 <script>
-    jQuery("body").on("click", "#responds .myButton", function(e) {
+    jQuery("body").on("click", "#responds .yibButton", function(e) {
         e.preventDefault();
         var clickedID = this.id.split("-");
         var DbNumberID = clickedID[1];
@@ -13,7 +13,7 @@ function my_action_javascript() {
             url: '<?php echo admin_url('admin-ajax.php')?>',
             dataType:"text",
             data: {
-                action: 'myaction',
+                action: 'delete_ip_bloked',
                 recordToDelete: + DbNumberID
             },
             success:function(response){
@@ -28,27 +28,28 @@ function my_action_javascript() {
     <?php
 }
 ?>
-<table id="responds" class="blueTable"">
+<table id="responds" class="yibTable"">
     <thead>
-    <tr>
-        <th>#</th>
-        <th>IP</th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>#</th>
+            <th>IP</th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-    <?php
-    $gen = Yaurau_IP_Blocker::getIPDB();
-    foreach ($gen as $key=>$row) {
-        echo '<tr id="item_'.$row["id"].'">';
-        echo '<td>'. ($key+1) .  '</td>';
-        echo '<td>' . $row["IP"].'</td>';
-        echo '<td class="del_wrapper"><button class="myButton" id="del-'.$row["id"].'">DELETE</button></td>';
-        echo '</tr>';
-    }
-    ?>
+        <?php
+        $gen = Yaurau_IP_Blocker::getidIPDB();
+        foreach ($gen as $key=>$row) {
+            echo '<tr id="item_'.$row["id"].'">';
+            echo '<td>'. ($key+1) .  '</td>';
+            echo '<td>' . $row["IP"].'</td>';
+            echo '<td class="del_wrapper"><button class="yibButton" id="del-' .$row["id"].'">DELETE</button></td>';
+            echo '</tr>';
+        }
+        ?>
     </tbody>
 </table>
+
 
 
 

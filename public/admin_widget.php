@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
-<div class="wrap">
+<div class="blueTable">
     <h2><?php echo get_admin_page_title() ?></h2>
     <p><h3>Add IPv4</h3>
     <form action=<?php echo '"options-general.php?page=' . Yaurau_IP_Blocker_PAGE .'"' ?> method="post">

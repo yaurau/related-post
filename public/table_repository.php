@@ -1,61 +1,55 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;?>
-<div class="container-fluid"" >
-    <div class="table-responsive">
-        <table id="repository_table" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>IP</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $gen = Yaurau_IP_Blocker::getIPRepository();
-                foreach ($gen as $key=>$val) {
-                    echo '
-                    <tr>
-                        <td>'. ($key+1) .  '</td>
-                        <td>'. $val .'</td>
-                     </tr>
-                    ';
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-<script>
-    jQuery(document).ready(function(){
-        jQuery('#repository_table').Tabledit({
-            url: '<?php echo preg_replace('/public/', 'includes', plugin_dir_url(__FILE__). 'repository_action.php');?>',
-            rowIdentifier: 'data-id',
-            editButton: false,
-            restoreButton: false,
-            buttons: {
-                delete: {
-                    class: 'btn btn-sm btn-danger',
-                    html: '<span class="glyphicon glyphicon-trash"></span> &nbsp DELETE',
-                    action: 'delete'
+<?php
+add_action('admin_print_footer_scripts', 'yib_table_repository', 99);
+function yib_table_repository() {
+    ?>
+    <script>
+        jQuery("body").on("click", "#responds .yibButton", function(e) {
+            e.preventDefault();
+            var clickedID = this.id.split("-");
+            var DbNumberID = clickedID[1];
+            jQuery.ajax({
+                type: "POST",
+                url: '<?php echo admin_url('admin-ajax.php')?>',
+                dataType:"text",
+                data: {
+                    action: 'ip_repository',
+                    recordToDelete: + DbNumberID
                 },
-                confirm: {
-                    class: 'btn btn-sm btn-default',
-                    html: 'Are you sure?'
+                success:function(response){
+                    jQuery('#item_'+DbNumberID).fadeOut("slow");
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    alert(thrownError);
                 }
-            },
-            columns:{
-                identifier:[1, 'IP'],
-                editable:[[0, '#']]
-            },
-            restoreButton:false,
-            editButton: false,
-            onSuccess:function(data, textStatus, jqXHR)
-            {
-                if(data.action == 'delete')
-                {
-                    $('#'+data.id).remove();
-                }
-            }
+            });
         });
-    });
-</script>
+    </script>
+    <?php
+}
+?>
+<table id="responds" class="yibTable"">
+    <thead>
+        <tr>
+            <th>#</th>
+        <th>IP</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $gen = Yaurau_IP_Blocker::getidIPRepository();
+        foreach ($gen as $key=>$row) {
+            echo '<tr id="item_'.$row["id"].'">';
+            echo '<td>'. ($key+1) .  '</td>';
+            echo '<td>' . $row["IP"].'</td>';
+            echo '<td class="del_wrapper"><button class="yibButton" id="del-' .$row["id"].'">DELETE</button></td>';
+            echo '</tr>';
+        }
+    ?>
+    </tbody>
+</table>
+
+
+
 

@@ -1,5 +1,4 @@
 <?php
-
 function yib_msp_field() {
     $val = get_option('option');
     $val = $val ? $val['input'] : null;

@@ -5,31 +5,23 @@ class Yaurau_IP_Blocker
     public $set;
 
     /*
-    * Function name: getIPDB
-    * Purpose: get IP
+    * Function name: getidIPDB
+    * Purpose: get IP and id
     */
-    static public function getIPDB()
+    static public function getidIPDB()
     {
-        $valueIP = Yaurau_IP_Blocker_DB::loadIPDB();
+        $valueIP = Yaurau_IP_Blocker_DB::loadidIPDB();
         return $valueIP;
-        /*foreach ($valueIP as $key => $value) {
-            foreach ($value as $v2) {
-                yield $v2;
-            }
-        }*/
     }
     /*
-    * Function name: getIPRepository
-    * Purpose: get IP fo repository
+    * Function name: getidIPRepository
+    * Purpose: get id and IP fo repository
     */
-    static public function getIPRepository()
+    static public function getidIPRepository()
     {
-        $valueIP = Yaurau_IP_Blocker_DB::loadIPRepository();
-        foreach ($valueIP as $key => $value) {
-            foreach ($value as $v2) {
-                yield $v2;
-            }
-        }
+        $valueIP = Yaurau_IP_Blocker_DB::loadidIPRepository();
+        return $valueIP;
+
     }
     /*
     * Function name: enterIP
@@ -138,8 +130,6 @@ class Yaurau_IP_Blocker
             else{
                 header('Location:' . esc_url( plugins_url('yaurau-ip-blocker/public/banned.html')));
             }
-
         }
-
     }
 }

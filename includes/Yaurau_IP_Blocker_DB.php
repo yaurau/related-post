@@ -60,6 +60,16 @@ class Yaurau_IP_Blocker_DB
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
+    /*
+    * Function name: loadidIPRepository
+    * Purpose: load id and IP of wp_yaurau_ip_repository
+    */
+    static public function loadidIPRepository()
+    {
+        global $wpdb;
+        $sql = "SELECT `id`,`IP` FROM `wp_yaurau_ip_repository`";
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
 
     /*
     * Function name: loadIPRepository
@@ -115,6 +125,18 @@ class Yaurau_IP_Blocker_DB
         $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_repository WHERE IP= %s", $IP);
         $wpdb->query($sql);
+    }
+    /*
+    * Function name: deleteIPDbBlocked
+    * Purpose: get POST and delete IP in the table wp_yaurau_ip_repository
+    */
+    static public function deleteIPDbRepositoryByPost()
+    {
+        global $wpdb;
+        $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
+        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_repository WHERE id = %s", $id);
+        $wpdb->query($sql);
+        wp_die();
     }
     /*
     * Function name: createDBIpBlocked
@@ -206,9 +228,20 @@ class Yaurau_IP_Blocker_DB
     static public function loadIPDB()
     {
         global $wpdb;
+        $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocked`";
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
+    /*
+    * Function name: loadidIPDB
+    * Purpose: load id and IP
+    */
+    static public function loadidIPDB()
+    {
+        global $wpdb;
         $sql = "SELECT `id`,`IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
+    /*
     /*
     * Function name: getTime
     * Purpose: get time
@@ -230,6 +263,18 @@ class Yaurau_IP_Blocker_DB
         $IP = $_SERVER ['REMOTE_ADDR'];
         $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocker WHERE `IP`= %s", $IP);
         $wpdb->query($sql);
+    }
+    /*
+    * Function name: deleteIPDbBlocked
+    * Purpose: delete IP in the table wp_yaurau_ip_blocked
+    */
+    static public function deleteIPDbBlocked()
+    {
+        global $wpdb;
+        $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
+        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $id);
+        $wpdb->query($sql);
+        wp_die();
     }
     /*
     * Function name: getViews

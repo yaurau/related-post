@@ -17,17 +17,8 @@ Yaurau_IP_Blocker_Admin::getCreateMenu();
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_IP_Blocker_Admin', 'getSettingsLink'] );
 add_action( 'plugins_loaded', ['Yaurau_IP_Blocker','handleIP']);
 add_action( 'init', ['Yaurau_IP_Blocker','redirectingBlockedIP']);
-add_action('wp_ajax_myaction', 'my_action_callback');
-function my_action_callback() {
-    global $wpdb;
-    $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
-$sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $id);
-    $wpdb->query($sql);
-echo "Hello" . $_POST["recordToDelete"];
+add_action( 'admin_enqueue_scripts', ['Yaurau_IP_Blocker_CSS', 'CSS'], 99 );
+add_action('wp_ajax_delete_ip_bloked', ['Yaurau_IP_Blocker_DB','deleteIPDbBlocked']);
+add_action('wp_ajax_delete_ip_repository', ['Yaurau_IP_Blocker_DB','deleteIPDbRepositoryByPost']);
 
-    wp_die(); // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
-}
-add_action( 'admin_enqueue_scripts', function(){
-    wp_enqueue_style( 'my-wp-admin', plugin_dir_url(__FILE__). 'public/css/wp-admin.css' );
-}, 1 );
 
