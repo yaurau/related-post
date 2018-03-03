@@ -1,32 +1,5 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit;?>
-<?php
-add_action('admin_print_footer_scripts', 'yib_table_blocked', 99);
-function yib_table_blocked() {
-?>
-<script>
-    jQuery("body").on("click", "#responds .yibButton", function(e) {
-        e.preventDefault();
-        var clickedID = this.id.split("-");
-        var DbNumberID = clickedID[1];
-        jQuery.ajax({
-            type: "POST",
-            url: '<?php echo admin_url('admin-ajax.php')?>',
-            dataType:"text",
-            data: {
-                action: 'delete_ip_bloked',
-                recordToDelete: + DbNumberID
-            },
-            success:function(response){
-                jQuery('#item_'+DbNumberID).fadeOut("slow");
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(thrownError);
-            }
-        });
-    });
-</script>
-    <?php
-}
+<?php if ( ! defined( 'ABSPATH' ) ) exit;
+add_action('admin_print_footer_scripts', ['Yaurau_IP_Blocker_CSS', 'includeAjax'], 99);
 ?>
 <table id="responds" class="yibTable"">
     <thead>

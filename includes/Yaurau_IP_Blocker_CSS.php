@@ -1,16 +1,60 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 03.03.2018
- * Time: 8:03
- */
+if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker_CSS
 {
-    static function CSS()
+    static function getCSS()
     {
-        wp_enqueue_style('my-wp-admin', plugins_url().'/yaurau-ip-blocker/public/css/wp-admin.css');
+        wp_enqueue_style('my-wp-admin', plugins_url().'/yaurau-ip-blocker/public/css/yib-admin.css');
     }
+    static function includeAjax()
+    {
+        ?>
+        <script>
+            jQuery("body").on("click", "#responds .yibButton", function(e) {
+                e.preventDefault();
+                var clickedID = this.id.split("-");
+                var DbNumberID = clickedID[1];
+                jQuery.ajax({
+                    type: "POST",
+                    url: '<?php echo admin_url('admin-ajax.php')?>',
+                    dataType:"text",
+                    data: {
+                        action: 'delete_ip_bloked',
+                        recordToDelete: + DbNumberID
+                    },
+                    success:function(response){
+                        jQuery('#item_'+DbNumberID).fadeOut("slow");
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        alert(thrownError);
+                    }
+                });
+            });
+        </script>
+        <script>
+            jQuery("body").on("click", "#respondsRepository .yibButton", function(e) {
+                e.preventDefault();
+                var clickedID = this.id.split("-");
+                var DbNumberID = clickedID[1];
+                jQuery.ajax({
+                    type: "POST",
+                    url: '<?php echo admin_url('admin-ajax.php')?>',
+                    dataType:"text",
+                    data: {
+                        action: 'delete_ip_repository',
+                        recordToDelete: + DbNumberID
+                    },
+                    success:function(response){
+                        jQuery('#item_'+DbNumberID).fadeOut("slow");
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        alert(thrownError);
+                    }
+                });
+            });
+        </script>
+        <?php
+    }
+
 
 }

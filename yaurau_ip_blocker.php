@@ -17,8 +17,8 @@ Yaurau_IP_Blocker_Admin::getCreateMenu();
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_IP_Blocker_Admin', 'getSettingsLink'] );
 add_action( 'plugins_loaded', ['Yaurau_IP_Blocker','handleIP']);
 add_action( 'init', ['Yaurau_IP_Blocker','redirectingBlockedIP']);
-add_action( 'admin_enqueue_scripts', ['Yaurau_IP_Blocker_CSS', 'CSS'], 99 );
+add_action( 'admin_enqueue_scripts', ['Yaurau_IP_Blocker_CSS', 'getCSS'], 99 );
 add_action('wp_ajax_delete_ip_bloked', ['Yaurau_IP_Blocker_DB','deleteIPDbBlocked']);
-add_action('wp_ajax_delete_ip_repository', ['Yaurau_IP_Blocker_DB','deleteIPDbRepositoryByPost']);
+add_action('wp_ajax_delete_ip_repository', ['Yaurau_IP_Blocker_DB','deleteIPDbRepositoryByPost'], 99);
 
 
