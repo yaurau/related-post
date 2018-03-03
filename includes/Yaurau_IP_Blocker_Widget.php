@@ -12,4 +12,16 @@ class Yaurau_IP_Blocker_Widget extends WP_Widget
     {
         include_once __DIR__ . '/../public/admin_widget.php';
     }
+    static public function field() {
+        $val = get_option('option');
+        $val = $val ? $val['input'] : null;
+        ?> <input type="text" name="option[input]" value="<?php
+        if(esc_attr( $val )<5){
+            echo "";
+        }
+        else {
+            echo esc_attr( $val );
+        }
+        ?>" /><?php
+    }
 }

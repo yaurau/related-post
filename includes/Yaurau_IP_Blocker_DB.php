@@ -266,13 +266,21 @@ class Yaurau_IP_Blocker_DB
     }
     /*
     * Function name: deleteIPDbBlockedByPost
-    * Purpose: get POST and delete IP in the table wp_yaurau_ip_blocked
+    * Purpose: delete IP in the table wp_yaurau_ip_blocked
     */
     public function deleteIPDbBlockedByPost()
     {
         global $wpdb;
-        //$sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
-       // $wpdb->query($sql);
+        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
+        $wpdb->query($sql);
+    }
+    /*
+ * Function name: getIPDbBlockedByPost
+ * Purpose: get POST IP in the table wp_yaurau_ip_blocked
+ */
+    public function getIPDbBlockedByPost()
+    {
+        global $wpdb;
         $sql = $wpdb->prepare("SELECT `IP` FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
         return $wpdb->get_results($sql, OBJECT);
     }

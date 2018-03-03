@@ -140,12 +140,13 @@ class Yaurau_IP_Blocker
         $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
         $var = new Yaurau_IP_Blocker_DB();
         $var->id = $id;
-        $IP = $var->deleteIPDbBlockedByPost()[0]->IP;
+        $IP = $var->getIPDbBlockedByPost()[0]->IP;
         $file = __DIR__ . '/../../../../.htaccess';
         $data = file_get_contents($file);
         $l = 'Deny from ' . $IP;
         $replace = str_replace($l,'', $data);
         file_put_contents($file, $replace);
+        $var->deleteIPDbBlockedByPost();
         wp_die();
     }
 }
