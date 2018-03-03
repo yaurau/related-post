@@ -55,6 +55,4 @@ class Yaurau_IP_Blocker_CSS
         </script>
         <?php
     }
-
-
 }

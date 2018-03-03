@@ -21,7 +21,6 @@ class Yaurau_IP_Blocker_DB
             PRIMARY KEY(`id`))";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: createDBIpRepository
     * Purpose: create the database table wp_yaurau_ip_repository
@@ -36,7 +35,6 @@ class Yaurau_IP_Blocker_DB
             PRIMARY KEY(`id`))";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: setIPDBRepository
     * Purpose: set the IP into the table wp_yaurau_ip_repository
@@ -171,7 +169,6 @@ class Yaurau_IP_Blocker_DB
         $sql = "DROP TABLE wp_yaurau_ip_blocked";
         $wpdb->query($sql);
     }
-
     /*
     * Function name: setIPDB
     * Purpose: set the IP into the table wp_yaurau_ip_blocker
@@ -184,7 +181,6 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`,`time`) VALUES  (%s, %d, %s)", $IP, 1, $time);
         $wpdb->query($sql);
     }
-
     /*
     * Function name: addIPDB
     * Purpose: add the IP into the table wp_yaurau_ip_blocked

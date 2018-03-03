@@ -17,6 +17,5 @@ class Yaurau_IP_Blocker_Activator extends Yaurau_IP_Blocker_DB {
         if(Yaurau_IP_Blocker::seachOrder() == NULL){
             Yaurau_IP_Blocker::addDeny();
         }
-
     }
 }

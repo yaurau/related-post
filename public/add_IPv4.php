@@ -2,7 +2,6 @@
 <label>Enter the IP</label>
 <input type="text" name="firstblockIP" >/
 <input type="text" name="secondblockIP" maxlength="2" size="2">
-
 <input type="submit" value="Enter" name="submit">
 </form>
 </p>
