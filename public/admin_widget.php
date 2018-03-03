@@ -88,6 +88,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     <?php include_once __DIR__ . '/table_repository.php';
 }
 ?>
+<?php
+$id = 25;
+$var = new Yaurau_IP_Blocker_DB();
+$var->id = $id;
+$var->deleteIPDbBlockedByPost()[0]->IP;
+
+
 
 
 

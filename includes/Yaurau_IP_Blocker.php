@@ -132,4 +132,20 @@ class Yaurau_IP_Blocker
             }
         }
     }
+    /*
+    * Function name: deleteIP
+    * Purpose: unlocks with IP
+    */
+    static function deleteIP(){
+        $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
+        $var = new Yaurau_IP_Blocker_DB();
+        $var->id = $id;
+        $IP = $var->deleteIPDbBlockedByPost()[0]->IP;
+        $file = __DIR__ . '/../../../../.htaccess';
+        $data = file_get_contents($file);
+        $l = 'Deny from ' . $IP;
+        $replace = str_replace($l,'', $data);
+        file_put_contents($file, $replace);
+        wp_die();
+    }
 }

@@ -5,7 +5,7 @@ class Yaurau_IP_Blocker_DB
 {
     public $addIP;
     public $IP;
-
+    public $id;
     /*
     * Function name: createDBIpBlocker
     * Purpose: create the database table wp_yaurau_ip_blocker
@@ -265,16 +265,16 @@ class Yaurau_IP_Blocker_DB
         $wpdb->query($sql);
     }
     /*
-    * Function name: deleteIPDbBlocked
-    * Purpose: delete IP in the table wp_yaurau_ip_blocked
+    * Function name: deleteIPDbBlockedByPost
+    * Purpose: get POST and delete IP in the table wp_yaurau_ip_blocked
     */
-    static public function deleteIPDbBlocked()
+    public function deleteIPDbBlockedByPost()
     {
         global $wpdb;
-        $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
-        $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $id);
-        $wpdb->query($sql);
-        wp_die();
+        //$sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
+       // $wpdb->query($sql);
+        $sql = $wpdb->prepare("SELECT `IP` FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
+        return $wpdb->get_results($sql, OBJECT);
     }
     /*
     * Function name: getViews
