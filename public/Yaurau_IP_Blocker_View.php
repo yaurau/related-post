@@ -1,10 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-class Yaurau_IP_Blocker_CSS
+class Yaurau_IP_Blocker_View
 {
     static function getCSS()
     {
-        wp_enqueue_style('my-wp-admin', plugins_url().'/yaurau-ip-blocker/public/css/yib-admin.css');
+        wp_enqueue_style('my-wp-admin', plugins_url('css/yib-admin.css', __FILE__));
     }
     static function includeAjax()
     {
@@ -54,5 +54,8 @@ class Yaurau_IP_Blocker_CSS
             });
         </script>
         <?php
+    }
+    static public function getView(){
+        return plugins_url('banned.html',__FILE__);
     }
 }

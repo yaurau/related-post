@@ -128,7 +128,8 @@ class Yaurau_IP_Blocker
                 Yaurau_IP_Blocker_Repository::deleteIPbyRepository();
             }
             else{
-                header('Location:' . esc_url( plugins_url('yaurau-ip-blocker/public/banned.html')));
+                $url = Yaurau_IP_Blocker_View::getView();
+                header('Location:' . esc_url($url));
             }
         }
     }
