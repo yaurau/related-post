@@ -13,10 +13,11 @@ if(current_user_can(delete_plugins)) {
     $first = filter_var($_POST['firstblockIPv4'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     $second = filter_var($_POST['secondblockIPv4'], FILTER_VALIDATE_INT, $options);
     if (($first !== false && $second !== false)) {
+        $IP = $first . '/' . $second;
         $l = new Yaurau_IP_Blocker();
-        $l->set = $first . '/' . $second;
-        $l->enterIP();
-        echo "IP $l->set blocked";
+        $l->set = $IP;
+        echo $l->checkIP();
+
     } elseif ($first !== false && empty($second)) {
         $l = new Yaurau_IP_Blocker();
         $l->set = $first;

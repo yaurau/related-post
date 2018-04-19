@@ -203,6 +203,16 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         return $wpdb->query($sql);
     }
+    /*
+    * Function name: seachIPDB
+    * Purpose: seach IP search in BD
+    */
+    public function seachIPDB()
+    {
+        global $wpdb;
+        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $this->IP);
+        return $wpdb->query($sql);
+    }
 
     /*
     * Function name: counterViews

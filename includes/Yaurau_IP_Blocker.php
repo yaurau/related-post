@@ -3,11 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker
 {
     public $set;
-
     /*
     * Function name: getidIPDB
     * Purpose: get IP and id
     */
+
+
     static public function getidIPDB()
     {
         $valueIP = Yaurau_IP_Blocker_DB::loadidIPDB();
@@ -35,6 +36,25 @@ class Yaurau_IP_Blocker
         $add = new Yaurau_IP_Blocker_DB();
         $add->addIP = $this->set;
         $add->addIPDB();
+        return "IP $this->set blocked";
+    }
+    /*
+    * Function name: checkIP
+    * Purpose: check IP
+    */
+    public function checkIP()
+    {
+        $check = new Yaurau_IP_Blocker_DB();
+        $check->seachIPDB();
+        $check->IP = $this->set;
+        if($check->seachIPDB() == NULL){
+            $add = $this;
+            $add->set = $check->IP;
+            $add->enterIP();
+        }
+        else {
+            return "This IP address $this->set is already blocked";
+        }
     }
     /*
     * Function name: handleIP
