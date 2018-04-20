@@ -36,7 +36,6 @@ class Yaurau_IP_Blocker
         $add = new Yaurau_IP_Blocker_DB();
         $add->addIP = $this->set;
         $add->addIPDB();
-        return "IP $this->set blocked";
     }
     /*
     * Function name: checkIP
@@ -51,6 +50,7 @@ class Yaurau_IP_Blocker
             $add = $this;
             $add->set = $check->IP;
             $add->enterIP();
+            return "IP $this->set blocked";
         }
         else {
             return "This IP address $this->set is already blocked";

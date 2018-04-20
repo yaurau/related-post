@@ -210,7 +210,7 @@ class Yaurau_IP_Blocker_DB
     public function seachIPDB()
     {
         global $wpdb;
-        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $this->IP);
+        $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocked` WHERE `IP`= %s", $this->IP);
         return $wpdb->query($sql);
     }
 
