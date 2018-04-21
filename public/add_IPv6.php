@@ -8,10 +8,10 @@
 if(current_user_can(delete_plugins)) {
     $first = filter_var($_POST['firstblockIPv6'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
     if (($first !== false)) {
+        $IP = $first;
         $l = new Yaurau_IP_Blocker();
-        $l->set = $first;
-        $l->enterIP();
-        echo "IP $l->set blocked";
+        $l->set = $IP;
+        echo $l->checkIP();
     } elseif ($_POST['submitIPv6']) {
         echo "Incorrect IP";
     }

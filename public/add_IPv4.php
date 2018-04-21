@@ -17,12 +17,11 @@ if(current_user_can(delete_plugins)) {
         $l = new Yaurau_IP_Blocker();
         $l->set = $IP;
         echo $l->checkIP();
-
     } elseif ($first !== false && empty($second)) {
+        $IP = $first;
         $l = new Yaurau_IP_Blocker();
-        $l->set = $first;
-        $l->enterIP();
-        echo "IP $l->set blocked";
+        $l->set = $IP;
+        echo $l->checkIP();
     } elseif ($_POST['submitIPv4']) {
         echo "Incorrect IP";
     }
