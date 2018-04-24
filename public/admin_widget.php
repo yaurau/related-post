@@ -3,6 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <h2><?php echo get_admin_page_title() ?></h2>
 <p>
+    <h3>You IP adress</h3>
+    <h4>You IP adress: <?php echo $_SERVER ['REMOTE_ADDR']?></h4>
+</p>
+<p>
     <h3>Add IPv4</h3>
 </p>
     <?php include_once __DIR__ . '/add_IPv4.php';?>

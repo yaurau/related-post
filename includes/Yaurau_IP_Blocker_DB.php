@@ -6,6 +6,7 @@ class Yaurau_IP_Blocker_DB
     public $addIP;
     public $IP;
     public $id;
+
     /*
     * Function name: createDBIpBlocker
     * Purpose: create the database table wp_yaurau_ip_blocker
