@@ -51,8 +51,7 @@ class Yaurau_IP_Blocker
             $add->set = $check->IP;
             $add->enterIP();
             return "IP $this->set blocked";
-        }
-        else {
+        } else {
             return "This IP address $this->set is already blocked";
         }
     }
@@ -64,18 +63,20 @@ class Yaurau_IP_Blocker
     {
         if (!empty($_POST)) {
             $signon = wp_signon();
+            var_dump($signon);
             if (is_wp_error($signon)) {
-                if($_SERVER['REMOTE_ADDR']!= $_SERVER ['SERVER_ADDR']) {
+                if ($_SERVER['REMOTE_ADDR'] != $_SERVER ['SERVER_ADDR']) {
                     if (Yaurau_IP_Blocker_DB::handleIPDB() == NULL) {
                         Yaurau_IP_Blocker_DB::setIPDB();
-                    }
-                    else {
+                    } else {
                         Yaurau_IP_Blocker_Parser::parseQuery();
                     }
                 }
             }
         }
     }
+
+
     /*
     * Function name: addDeny
     * Purpose: add deny

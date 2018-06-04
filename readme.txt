@@ -10,5 +10,7 @@ The plugin blocks IP-addresses on the entered IP-address, and temporarily blocks
 = Development =
 * [https://github.com/yaurau/yaurau-ip-blocker](https://github.com/yaurau/yaurau-ip-blocker"https://github.com/yaurau/yaurau-ip-blocker")
 
+= Version 1.1 (18-05-2018) =
+*Error correction
 = Version 1.00 (24-02-2018) =
 * NEW: Initial Release
