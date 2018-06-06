@@ -15,7 +15,7 @@ register_activation_hook( __FILE__, ['Yaurau_IP_Blocker_Activator','activate']);
 register_deactivation_hook( __FILE__, ['Yaurau_IP_Blocker_Deactivator','deactivate']);
 Yaurau_IP_Blocker_Admin::getCreateMenu();
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), ['Yaurau_IP_Blocker_Admin', 'getSettingsLink'] );
-add_action( 'login_footer', ['Yaurau_IP_Blocker','handleIP']);
+add_action( 'wp_login_failed', ['Yaurau_IP_Blocker','handleIP']);
 add_action( 'init', ['Yaurau_IP_Blocker','redirectingBlockedIP']);
 add_action( 'admin_enqueue_scripts', ['Yaurau_IP_Blocker_View', 'getCSS'], 99 );
 add_action('wp_ajax_delete_ip_bloked', ['Yaurau_IP_Blocker','deleteIP']);

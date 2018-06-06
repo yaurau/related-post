@@ -61,22 +61,14 @@ class Yaurau_IP_Blocker
     */
     static public function handleIP()
     {
-        if (!empty($_POST)) {
-            $signon = wp_signon();
-            var_dump($signon);
-            if (is_wp_error($signon)) {
-                if ($_SERVER['REMOTE_ADDR'] != $_SERVER ['SERVER_ADDR']) {
-                    if (Yaurau_IP_Blocker_DB::handleIPDB() == NULL) {
-                        Yaurau_IP_Blocker_DB::setIPDB();
-                    } else {
-                        Yaurau_IP_Blocker_Parser::parseQuery();
-                    }
-                }
-            }
+        if ($_SERVER['REMOTE_ADDR'] != $_SERVER ['SERVER_ADDR']) {
+                   if (Yaurau_IP_Blocker_DB::handleIPDB() == NULL) {
+                       Yaurau_IP_Blocker_DB::setIPDB();
+                   } else {
+                       Yaurau_IP_Blocker_Parser::parseQuery();
+                   }
         }
     }
-
-
     /*
     * Function name: addDeny
     * Purpose: add deny
