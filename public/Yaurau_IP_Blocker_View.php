@@ -1,4 +1,10 @@
 <?php
+/**
+ *  @author   Rauvtovich Yauhen
+ *   @copyright Y.Rauvtovich 2018
+ *   @license   GPL-2.0+
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker_View
 {

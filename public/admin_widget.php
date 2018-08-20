@@ -1,4 +1,10 @@
 <?php
+/**
+ *  @author   Rauvtovich Yauhen
+ *   @copyright Y.Rauvtovich 2018
+ *   @license   GPL-2.0+
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <h2><?php echo get_admin_page_title() ?></h2>

@@ -1,16 +1,31 @@
 <?php
+/**
+ *  @author   Rauvtovich Yauhen
+ *   @copyright Y.Rauvtovich 2018
+ *   @license   GPL-2.0+
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 require_once __DIR__ . '/../autoload.php';
 class Yaurau_IP_Blocker_DB
 {
+    /**
+     * @var
+     */
     public $addIP;
+    /**
+     * @var
+     */
     public $IP;
+    /**
+     * @var
+     */
     public $id;
 
-    /*
-    * Function name: createDBIpBlocker
-    * Purpose: create the database table wp_yaurau_ip_blocker
-    */
+    /**
+     * Function name: createDBIpBlocker
+     * Purpose: create the database table wp_yaurau_ip_blocker
+     */
     static public function createDBIpBlocker()
     {
         global $wpdb;
@@ -22,10 +37,11 @@ class Yaurau_IP_Blocker_DB
             PRIMARY KEY(`id`))";
         $wpdb->query($sql);
     }
-    /*
-    * Function name: createDBIpRepository
-    * Purpose: create the database table wp_yaurau_ip_repository
-    */
+
+    /**
+     * Function name: createDBIpRepository
+     * Purpose: create the database table wp_yaurau_ip_repository
+     */
     static public function createDBIpRepository()
     {
         global $wpdb;
@@ -36,10 +52,11 @@ class Yaurau_IP_Blocker_DB
             PRIMARY KEY(`id`))";
         $wpdb->query($sql);
     }
-    /*
-    * Function name: setIPDBRepository
-    * Purpose: set the IP into the table wp_yaurau_ip_repository
-    */
+
+    /**
+     * Function name: setIPDBRepository
+     * Purpose: set the IP into the table wp_yaurau_ip_repository
+     */
     static public function setIPDBRepository()
     {
         global $wpdb;
@@ -49,20 +66,23 @@ class Yaurau_IP_Blocker_DB
         $wpdb->query($sql);
     }
 
-    /*
-    * Function name: loadIPRepository
-    * Purpose: load IP of wp_yaurau_ip_repository
-    */
+    /**
+     * Function name: loadIPRepository
+     * Purpose: load IP of wp_yaurau_ip_repository
+     * @return array|null|object
+     */
     static public function loadIPRepository()
     {
         global $wpdb;
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
-    /*
-    * Function name: loadidIPRepository
-    * Purpose: load id and IP of wp_yaurau_ip_repository
-    */
+
+    /**
+     * Function name: loadidIPRepository
+     * Purpose: load id and IP of wp_yaurau_ip_repository
+     * @return array|null|object
+     */
     static public function loadidIPRepository()
     {
         global $wpdb;
@@ -70,10 +90,11 @@ class Yaurau_IP_Blocker_DB
         return $wpdb->get_results($sql, ARRAY_A);
     }
 
-    /*
-    * Function name: loadIPRepository
-    * Purpose: load IP of wp_yaurau_ip_repository
-    */
+    /**
+     * Function name: loadIPRepository
+     * Purpose: load IP of wp_yaurau_ip_repository
+     * @return false|int
+     */
     static public function seachIPRepository()
     {
         global $wpdb;
@@ -81,10 +102,12 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_repository`WHERE IP = %s", $IP);
         return $wpdb->query($sql);
     }
-    /*
-    * Function name: getTimeRepository
-    * Purpose: get time of wp_yaurau_ip_repository
-    */
+
+    /**
+     * Function name: getTimeRepository
+     * Purpose: get time of wp_yaurau_ip_repository
+     * @return array|null|object
+     */
     static public function getTimeRepository()
     {
         global $wpdb;
@@ -93,10 +116,10 @@ class Yaurau_IP_Blocker_DB
         return $wpdb->get_results($sql, OBJECT);
     }
 
-    /*
-    * Function name: dropDBIPRepository
-    * Purpose: drop the database tables wp_yaurau_ip_repository
-    */
+    /**
+     * Function name: dropDBIPRepository
+     * Purpose: drop the database tables wp_yaurau_ip_repository
+     */
     static public function dropDBIPRepository()
     {
         global $wpdb;
@@ -104,20 +127,22 @@ class Yaurau_IP_Blocker_DB
         $wpdb->query($sql);
     }
 
-    /*
-    * Function name: handleIPDB
-    * Purpose: check the corresponding field
-    */
+    /**
+     * Function name: handleIPDB
+     * Purpose: check the corresponding field
+     * @return false|int
+     */
     static public function handleIPRepository()
     {
         global $wpdb;
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_repository`";
         return $wpdb->query($sql);
     }
-    /*
+
+    /**
      * Function name: deleteIPDB
-    * Purpose: delete IP in the table wp_yaurau_ip_blocker
-    */
+     * Purpose: delete IP in the table wp_yaurau_ip_blocker
+     */
     static public function deleteIPDBRepository()
     {
         global $wpdb;
@@ -125,10 +150,11 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_repository WHERE IP= %s", $IP);
         $wpdb->query($sql);
     }
-    /*
-    * Function name: deleteIPDbBlocked
-    * Purpose: get POST and delete IP in the table wp_yaurau_ip_repository
-    */
+
+    /**
+     * Function name: deleteIPDbBlocked
+     * Purpose: get POST and delete IP in the table wp_yaurau_ip_repository
+     */
     static public function deleteIPDbRepositoryByPost()
     {
         global $wpdb;
@@ -137,10 +163,11 @@ class Yaurau_IP_Blocker_DB
         $wpdb->query($sql);
         wp_die();
     }
-    /*
-    * Function name: createDBIpBlocked
-    * Purpose: create the database table wp_yaurau_ip_blocked
-    */
+
+    /**
+     * Function name: createDBIpBlocked
+     * Purpose: create the database table wp_yaurau_ip_blocked
+     */
     static public function createDBIpBlocked()
     {
         global $wpdb;
@@ -150,30 +177,33 @@ class Yaurau_IP_Blocker_DB
             PRIMARY KEY(`id`))";
         $wpdb->query($sql);
     }
-    /*
-    * Function name: dropDBIpBlocker
-    * Purpose: drop the database tables wp_yaurau_ip_blocker
-    */
+
+    /**
+     * Function name: dropDBIpBlocker
+     * Purpose: drop the database tables wp_yaurau_ip_blocker
+     */
     static public function dropDBIpBlocker()
     {
         global $wpdb;
         $sql = "DROP TABLE wp_yaurau_ip_blocker";
         $wpdb->query($sql);
     }
-    /*
-    * Function name: dropDBIpBlocked
-    * Purpose: drop the database tables wp_yaurau_ip_blocked
-    */
+
+    /**
+     * Function name: dropDBIpBlocked
+     * Purpose: drop the database tables wp_yaurau_ip_blocked
+     */
     static public function dropDBIpBlocked()
     {
         global $wpdb;
         $sql = "DROP TABLE wp_yaurau_ip_blocked";
         $wpdb->query($sql);
     }
-    /*
-    * Function name: setIPDB
-    * Purpose: set the IP into the table wp_yaurau_ip_blocker
-    */
+
+    /**
+     * Function name: setIPDB
+     * Purpose: set the IP into the table wp_yaurau_ip_blocker
+     */
     static public function setIPDB()
     {
         global $wpdb;
@@ -182,10 +212,11 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("INSERT INTO `wp_yaurau_ip_blocker`( `IP`, `number_views`,`time`) VALUES  (%s, %d, %s)", $IP, 1, $time);
         $wpdb->query($sql);
     }
-    /*
-    * Function name: addIPDB
-    * Purpose: add the IP into the table wp_yaurau_ip_blocked
-    */
+
+    /**
+     * Function name: addIPDB
+     * Purpose: add the IP into the table wp_yaurau_ip_blocked
+     */
     public function addIPDB()
     {
         global $wpdb;
@@ -193,10 +224,12 @@ class Yaurau_IP_Blocker_DB
         $wpdb->query($sql);
     }
 
-    /*
-    * Function name: handleIPDB
-    * Purpose: check the corresponding field
-    */
+
+    /**
+     * Function name: handleIPDB
+     * Purpose: check the corresponding field
+     * @return false|int
+     */
     static public function handleIPDB()
     {
         global $wpdb;
@@ -204,10 +237,12 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("SELECT `IP` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         return $wpdb->query($sql);
     }
-    /*
-    * Function name: seachIPDB
-    * Purpose: seach IP search in BD
-    */
+
+    /**
+     * Function name: seachIPDB
+     * Purpose: seach IP search in BD
+     * @return false|int
+     */
     public function seachIPDB()
     {
         global $wpdb;
@@ -215,10 +250,10 @@ class Yaurau_IP_Blocker_DB
         return $wpdb->query($sql);
     }
 
-    /*
-    * Function name: counterViews
-    * Purpose: the counter views
-    */
+    /**
+     * Function name: counterViews
+     * Purpose: the counter views
+     */
     static public function counterViews()
     {
         global $wpdb;
@@ -228,31 +263,36 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("UPDATE `wp_yaurau_ip_blocker` SET `number_views` = $views WHERE `IP`= %s", $IP);
         $wpdb->query($sql);
     }
-    /*
-    * Function name: loadIPDB
-    * Purpose: load IP
-    */
+
+    /**
+     * Function name: loadIPDB
+     * Purpose: load IP
+     * @return array|null|object
+     */
     static public function loadIPDB()
     {
         global $wpdb;
         $sql = "SELECT `IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
-    /*
-    * Function name: loadidIPDB
-    * Purpose: load id and IP
-    */
+
+    /**
+     * Function name: loadidIPDB
+     * Purpose: load id and IP
+     * @return array|null|object
+     */
     static public function loadidIPDB()
     {
         global $wpdb;
         $sql = "SELECT `id`,`IP` FROM `wp_yaurau_ip_blocked`";
         return $wpdb->get_results($sql, ARRAY_A);
     }
-    /*
-    /*
-    * Function name: getTime
-    * Purpose: get time
-    */
+
+    /**
+     * Function name: getTime
+     * Purpose: get time
+     * @return array|null|object
+     */
     static public function getTime()
     {
         global $wpdb;
@@ -260,10 +300,11 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("SELECT `time` FROM `wp_yaurau_ip_blocker` WHERE   `IP`= %s", $IP);
         return $wpdb->get_results($sql, OBJECT);
     }
-    /*
-    * Function name: deleteIPDB
-    * Purpose: delete IP in the table wp_yaurau_ip_blocker
-    */
+
+    /**
+     * Function name: deleteIPDB
+     * Purpose: delete IP in the table wp_yaurau_ip_blocker
+     */
     static public function deleteIPDB()
     {
         global $wpdb;
@@ -271,30 +312,35 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocker WHERE `IP`= %s", $IP);
         $wpdb->query($sql);
     }
-    /*
-    * Function name: deleteIPDbBlockedByPost
-    * Purpose: delete IP in the table wp_yaurau_ip_blocked
-    */
+
+    /**
+     * Function name: deleteIPDbBlockedByPost
+     * Purpose: delete IP in the table wp_yaurau_ip_blocked
+     */
     public function deleteIPDbBlockedByPost()
     {
         global $wpdb;
         $sql = $wpdb->prepare("DELETE FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
         $wpdb->query($sql);
     }
-    /*
- * Function name: getIPDbBlockedByPost
- * Purpose: get POST IP in the table wp_yaurau_ip_blocked
- */
+
+    /**
+     * Function name: getIPDbBlockedByPost
+     * Purpose: get POST IP in the table wp_yaurau_ip_blocked
+     * @return array|null|object
+     */
     public function getIPDbBlockedByPost()
     {
         global $wpdb;
         $sql = $wpdb->prepare("SELECT `IP` FROM wp_yaurau_ip_blocked WHERE id = %s", $this->id);
         return $wpdb->get_results($sql, OBJECT);
     }
-    /*
-    * Function name: getViews
-    * Purpose: get views
-    */
+
+    /**
+     * Function name: getViews
+     * Purpose: get views
+     * @return array|null|object
+     */
     static public function getViews()
     {
         global $wpdb;
@@ -302,10 +348,11 @@ class Yaurau_IP_Blocker_DB
         $sql = $wpdb->prepare("SELECT `number_views` FROM `wp_yaurau_ip_blocker` WHERE `IP`= %s", $IP);
         return $wpdb->get_results($sql, OBJECT);
     }
-    /*
-    * Function name: updateData
-    * Purpose: update data
-    */
+
+    /**
+     * Function name: updateData
+     * Purpose: update data
+     */
     static public function updateData()
     {
         global $wpdb;
