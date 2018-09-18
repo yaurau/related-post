@@ -1,33 +1,46 @@
 <?php
+/**
+ *  @author   Rauvtovich Yauhen
+ *   @copyright Y.Rauvtovich 2018
+ *   @license   GPL-2.0+
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 class Yaurau_IP_Blocker
 {
+    /**
+     * @var
+     */
     public $set;
-    /*
-    * Function name: getidIPDB
-    * Purpose: get IP and id
-    */
 
-
+    /**
+     * Function name: getidIPDB
+     * Purpose: get IP and id
+     * @return mixed
+     */
     static public function getidIPDB()
     {
         $valueIP = Yaurau_IP_Blocker_DB::loadidIPDB();
         return $valueIP;
     }
-    /*
-    * Function name: getidIPRepository
-    * Purpose: get id and IP fo repository
-    */
+
+    /**
+     * Function name: getidIPRepository
+     * Purpose: get id and IP fo repository     *
+     * @return mixed
+     */
     static public function getidIPRepository()
     {
         $valueIP = Yaurau_IP_Blocker_DB::loadidIPRepository();
         return $valueIP;
 
     }
-    /*
-    * Function name: enterIP
-    * Purpose: get IP
-    */
+
+    /**
+     * Function name: enterIP
+     * Purpose: get IP
+     */
     public function enterIP()
     {
         $file = __DIR__ . '/../../../../.htaccess';
@@ -37,10 +50,12 @@ class Yaurau_IP_Blocker
         $add->addIP = $this->set;
         $add->addIPDB();
     }
-    /*
-    * Function name: checkIP
-    * Purpose: check IP
-    */
+
+    /**
+     * Function name: checkIP
+     * Purpose: check IP
+     * @return string
+     */
     public function checkIP()
     {
         $check = new Yaurau_IP_Blocker_DB();
@@ -55,10 +70,11 @@ class Yaurau_IP_Blocker
             return "This IP address $this->set is already blocked";
         }
     }
-    /*
-    * Function name: handleIP
-    * Purpose: handle IP
-    */
+
+    /**
+     * Function name: handleIP
+     * Purpose: handle IP
+     */
     static public function handleIP()
     {
         if ($_SERVER['REMOTE_ADDR'] != $_SERVER ['SERVER_ADDR']) {
@@ -69,20 +85,22 @@ class Yaurau_IP_Blocker
                    }
         }
     }
-    /*
-    * Function name: addDeny
-    * Purpose: add deny
-    */
+
+    /**
+     * Function name: addDeny
+     * Purpose: add deny
+     */
     static public function addDeny()
     {
         $file = __DIR__ . '/../../../../.htaccess';
         $data = "Order Deny,Allow" . PHP_EOL;
         file_put_contents($file, $data, FILE_APPEND);
     }
-    /*
-    * Function name: deleteDeny()
-    * Purpose: delete Deny from IP
-    */
+
+    /**
+     * Function name: deleteDeny()
+     * Purpose: delete Deny from IP
+     */
     static public function deleteDeny()
     {
         $file = __DIR__ . '/../../../../.htaccess';
@@ -91,10 +109,11 @@ class Yaurau_IP_Blocker
         $replace = str_replace($arrayIP, '', $data);
         file_put_contents($file, $replace);
     }
-    /*
-    * Function name: deleteDeny()
-    * Purpose: delete Order Deny,Allow
-    */
+
+    /**
+     * Function name: deleteDeny()
+     * Purpose: delete Order Deny,Allow
+     */
     static public function deleteOrder()
     {
         $file = __DIR__ . '/../../../../.htaccess';
@@ -104,10 +123,12 @@ class Yaurau_IP_Blocker
         $replace = str_replace($order, '', $data, $count);
         file_put_contents($file, $replace);
     }
-    /*
-    * Function name: getIP()
-    * Purpose: get Deny from IP
-    */
+
+    /**
+     * Function name: getIP()
+     * Purpose: get Deny from IP
+     * @return Generator
+     */
     static public function getIP()
     {
         $l = Yaurau_IP_Blocker_DB::loadIPDB();
@@ -117,10 +138,12 @@ class Yaurau_IP_Blocker
             }
         }
     }
-    /*
-    * Function name: seachOrder()
-    * Purpose: seach string "Order Deny,Allow"
-    */
+
+    /**
+     * Function name: seachOrder()
+     * Purpose: seach string "Order Deny,Allow"
+     * @return mixed
+     */
     static public function seachOrder()
     {
         $file = __DIR__ . '/../../../../.htaccess';
@@ -128,10 +151,11 @@ class Yaurau_IP_Blocker
         preg_match('/Order Deny,Allow/', $data, $matches);
         return $matches;
     }
-    /*
-    * Function name: redirectingBlockedIP
-    * Purpose: redirecting blocked IP
-    */
+
+    /**
+     * Function name: redirectingBlockedIP
+     * Purpose: redirecting blocked IP
+     */
     static function redirectingBlockedIP()
     {
         if (Yaurau_IP_Blocker_DB::seachIPRepository() != NULL) {
@@ -146,10 +170,11 @@ class Yaurau_IP_Blocker
             }
         }
     }
-    /*
-    * Function name: deleteIP
-    * Purpose: unlocks with IP
-    */
+
+    /**
+     * Function name: deleteIP
+     * Purpose: unlocks with IP
+     */
     static function deleteIP(){
         $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
         $var = new Yaurau_IP_Blocker_DB();

@@ -5,8 +5,7 @@ function yib_msp_field() {
     ?> <input type="text" name="option[input]" value="<?php
     if(esc_attr( $val )<5){
         echo "";
-    }
-    else {
+    } else {
         echo esc_attr( $val );
     }
      ?>" /><?php

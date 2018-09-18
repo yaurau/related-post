@@ -1,11 +1,17 @@
 <?php
+/**
+ *  @author   Rauvtovich Yauhen
+ *   @copyright Y.Rauvtovich 2018
+ *   @license   GPL-2.0+
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 class Yaurau_IP_Blocker_Parser
 {
-    /*
-    * Function name: getIPDB
-    * Purpose: parsing the query
-    */
+    /**
+     * Function name: getIPDB
+     * Purpose: parsing the query
+     */
     static public function parseQuery(){
         $max = (get_option('option'));
         $countViews = Yaurau_IP_Blocker_DB::getViews()[0]->number_views;
