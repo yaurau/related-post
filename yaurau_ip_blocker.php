@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Plugin Name:       Yaurau IP Blocker
  * Plugin URI:        https://github.com/yaurau/yaurau-ip-blocker
  * Description:       The plugin blocks IP-addresses on the entered IP-address, and temporarily blocks IP-addresses when exceeding the limit of login and password and displays them in the table.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Rauvtovich Yauhen
  * Author URI:        https://github.com/yaurau
  * License:           GPL-2.0+
