@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 add_action('admin_print_footer_scripts', ['Yaurau_IP_Blocker_View', 'includeAjax'], 99);
 ?>
-<table id="responds" class="yibTable"">
+<table id="responds" class="yibTable">
     <thead>
         <tr>
             <th>#</th>

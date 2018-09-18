@@ -1,8 +1,8 @@
 <?php
 /**
  *  @author   Rauvtovich Yauhen
- *   @copyright Y.Rauvtovich 2018
- *   @license   GPL-2.0+
+ *  @copyright Y.Rauvtovich 2018
+ *  @license   GPL-2.0+
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -175,7 +175,8 @@ class Yaurau_IP_Blocker
      * Function name: deleteIP
      * Purpose: unlocks with IP
      */
-    static function deleteIP(){
+    static function deleteIP()
+    {
         $id = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
         $var = new Yaurau_IP_Blocker_DB();
         $var->id = $id;
